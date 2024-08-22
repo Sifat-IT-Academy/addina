@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Blog-grid {% endblock title %}
+{% block content %}     
+
+   <!-- Body main wrapper start -->
+   <main>
+
+      <!-- Breadcrumb area start  -->
+      <div class="breadcrumb__area theme-bg-1 p-relative z-index-11 pt-95 pb-95">
+         <div class="breadcrumb__thumb" data-background="{% static 'imgs/bg/breadcrumb-bg.jpg' %}"></div>
+         <div class="container">
+            <div class="row justify-content-center">
+               <div class="col-xxl-12">
+                  <div class="breadcrumb__wrapper text-center">
+                     <h2 class="breadcrumb__title">Blog Grid</h2>
+                     <div class="breadcrumb__menu">
+                        <nav>
+                           <ul>
+                              <li><span><a href="index.html">Home</a></span></li>
+                              <li><span>Blog Grid</span></li>
+                           </ul>
+                        </nav>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- Breadcrumb area start  -->
+
+      <!-- Postbox grid area start -->
+      <section class="postbox__grid-area section-space">
+         <div class="container">
+            <div class="row g-4">
+               <div class="col-xl-4 col-lg-6">
+                  <div class="blog-item theme-bg-2">
+                     <div class="blog-thumb mb-20 w-img">
+                        <a href="blog-details.html">
+                           <img src="{% static 'imgs/blog/grid/blog-1.jpg' %}" alt="">
+                        </a>
+                     </div>
+                     <div class="blog-content">
+                        <div class="postbox__meta mb-15">
+                           <span><a href="#">By Alex Manie</a></span>
+                           <span>03 jan, 2024</span>
+                        </div>
+                        <h4 class="blog-title">
+                           <a href="blog-details.html">Stunning Furniture with Aesthetic Appeal</a>
+                        </h4>
+                        <a class="text-btn" href="blog-details.html">Read More<span><i
+                                 class="fa-regular fa-angle-right"></i></span></a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-6">
+                  <div class="blog-item theme-bg-2">
+                     <div class="blog-thumb mb-20 w-img">
+                        <a href="blog-details.html">
+                           <img src="{% static 'imgs/blog/grid/blog-2.jpg' %}" alt="">
+                        </a>
+                     </div>
+                     <div class="blog-content">
+                        <div class="postbox__meta mb-15">
+                           <span><a href="#">By Alex Manie</a></span>
+                           <span>03 jan, 2024</span>
+                        </div>
+                        <h4 class="blog-title">
+                           <a href="blog-details.html">Stunning Furniture with Aesthetic Appeal</a>
+                        </h4>
+                        <a class="text-btn" href="blog-details.html">Read More<span><i
+                                 class="fa-regular fa-angle-right"></i></span></a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-6">
+                  <div class="blog-item theme-bg-2">
+                     <div class="blog-thumb mb-20 w-img">
+                        <a href="blog-details.html">
+                           <img src="{% static 'imgs/blog/grid/blog-3.jpg' %}" alt="">
+                        </a>
+                     </div>
+                     <div class="blog-content">
+                        <div class="postbox__meta mb-15">
+                           <span><a href="#">By Alex Manie</a></span>
+                           <span>03 jan, 2024</span>
+                        </div>
+                        <h4 class="blog-title">
+                           <a href="blog-details.html">Colour ideas for kitchen and dining spaces</a>
+                        </h4>
+                        <a class="text-btn" href="blog-details.html">Read More<span><i
+                                 class="fa-regular fa-angle-right"></i></span></a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-6">
+                  <div class="blog-item theme-bg-2">
+                     <div class="blog-thumb mb-20 w-img">
+                        <a href="blog-details.html">
+                           <img src="{% static 'imgs/blog/grid/blog-4.jpg' %}" alt="">
+                        </a>
+                     </div>
+                     <div class="blog-content">
+                        <div class="postbox__meta mb-15">
+                           <span><a href="#">By Alex Manie</a></span>
+                           <span>03 jan, 2024</span>
+                        </div>
+                        <h4 class="blog-title">
+                           <a href="blog-details.html">How to Make your Home a Showplace</a>
+                        </h4>
+                        <a class="text-btn" href="blog-details.html">Read More<span><i
+                                 class="fa-regular fa-angle-right"></i></span></a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-6">
+                  <div class="blog-item theme-bg-2">
+                     <div class="blog-thumb mb-20 w-img">
+                        <a href="blog-details.html">
+                           <img src="{% static 'imgs/blog/grid/blog-5.jpg' %}" alt="">
+                        </a>
+                     </div>
+                     <div class="blog-content">
+                        <div class="postbox__meta mb-15">
+                           <span><a href="#">By Alex Manie</a></span>
+                           <span>03 jan, 2024</span>
+                        </div>
+                        <h4 class="blog-title">
+                           <a href="blog-details.html">How to Make your Home a Showplace</a>
+                        </h4>
+                        <a class="text-btn" href="blog-details.html">Read More<span><i
+                                 class="fa-regular fa-angle-right"></i></span></a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-6">
+                  <div class="blog-item theme-bg-2">
+                     <div class="blog-thumb mb-20 w-img">
+                        <a href="blog-details.html">
+                           <img src="{% static 'imgs/blog/grid/blog-6.jpg' %}" alt="">
+                        </a>
+                     </div>
+                     <div class="blog-content">
+                        <div class="postbox__meta mb-15">
+                           <span><a href="#">By Alex Manie</a></span>
+                           <span>03 jan, 2024</span>
+                        </div>
+                        <h4 class="blog-title">
+                           <a href="blog-details.html">How To Choose The Right Sectional Sofa</a>
+                        </h4>
+                        <a class="text-btn" href="blog-details.html">Read More<span><i
+                                 class="fa-regular fa-angle-right"></i></span></a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-6">
+                  <div class="blog-item theme-bg-2">
+                     <div class="blog-thumb mb-20 w-img">
+                        <a href="blog-details.html">
+                           <img src="{% static 'imgs/blog/grid/blog-7.jpg' %}" alt="">
+                        </a>
+                     </div>
+                     <div class="blog-content">
+                        <div class="postbox__meta mb-15">
+                           <span><a href="#">By Alex Manie</a></span>
+                           <span>03 jan, 2024</span>
+                        </div>
+                        <h4 class="blog-title">
+                           <a href="blog-details.html">How To Choose The Right Sectional Sofa</a>
+                        </h4>
+                        <a class="text-btn" href="blog-details.html">Read More<span><i
+                                 class="fa-regular fa-angle-right"></i></span></a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-6">
+                  <div class="blog-item theme-bg-2">
+                     <div class="blog-thumb mb-20 w-img">
+                        <a href="blog-details.html">
+                           <img src="{% static 'imgs/blog/grid/blog-8.jpg' %}" alt="">
+                        </a>
+                     </div>
+                     <div class="blog-content">
+                        <div class="postbox__meta mb-15">
+                           <span><a href="#">By Alex Manie</a></span>
+                           <span>03 jan, 2024</span>
+                        </div>
+                        <h4 class="blog-title">
+                           <a href="blog-details.html">Colour ideas for kitchen and dining spaces</a>
+                        </h4>
+                        <a class="text-btn" href="blog-details.html">Read More<span><i
+                                 class="fa-regular fa-angle-right"></i></span></a>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-4 col-lg-6">
+                  <div class="blog-item theme-bg-2">
+                     <div class="blog-thumb mb-20 w-img">
+                        <a href="blog-details.html">
+                           <img src="{% static 'imgs/blog/grid/blog-9.jpg' %}" alt="">
+                        </a>
+                     </div>
+                     <div class="blog-content">
+                        <div class="postbox__meta mb-15">
+                           <span><a href="#">By Alex Manie</a></span>
+                           <span>03 jan, 2024</span>
+                        </div>
+                        <h4 class="blog-title">
+                           <a href="blog-details.html">Stunning Furniture with Aesthetic Appeal</a>
+                        </h4>
+                        <a class="text-btn" href="blog-details.html">Read More<span><i
+                                 class="fa-regular fa-angle-right"></i></span></a>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-xxl-12">
+                  <div class="pagination__wrapper mt-50">
+                     <div class="bd-basic__pagination d-flex align-items-center justify-content-center">
+                        <nav>
+                           <ul>
+                              <li>
+                                 <a href="#">1</a>
+                              </li>
+                              <li>
+                                 <a href="#">2</a>
+                              </li>
+                              <li>
+                                 <span class="current">3</span>
+                              </li>
+                              <li>
+                                 <a href="#"><i class="fa-regular fa-angle-right"></i></a>
+                              </li>
+                           </ul>
+                        </nav>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+      <!-- Postbox grid area end -->
+
+   </main>
+   <!-- Body main wrapper end -->
+
+   {% endblock content %}     
