@@ -1,3 +1,7 @@
 from django.db import models
+from account.models import User
 
-# Create your models here.
+class Contact(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    message = models.CharField(max_length=100)
