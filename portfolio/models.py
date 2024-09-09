@@ -1,33 +1,27 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from account.models import User
-
+from django.utils.translation import gettext_lazy as _
 
 
 class PortfolioCategory(models.Model):
-    name = models.CharField(max_length=50)
-    def __str__(self):
-        return f"{self.name}"
-        
+    name = models.CharField(max_length=255)
 
-class Location(models.Model):
-    name = models.CharField(max_length=100, unique=True)
-    latitude = models.FloatField()
-    longitude = models.FloatField()
-    country = models.CharField(max_length=100)
+    class Meta:
+        verbose_name = _("Portfolio Category")
+        verbose_name_plural = _("Portfolio Categories")
 
-    def __str__(self):
-        return self.name
-
-    
+   
 class Portfolio(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=255)
     description = RichTextField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    client = models.CharField(max_length=100)
-    location = models.ForeignKey(Location, on_delete=models.SET_NULL, null=True, blank=True)
-    create_date = models.DateTimeField(auto_now=True) 
-    category = models.ForeignKey(PortfolioCategory,on_delete=models.CASCADE)
-    
+    client = models.CharField(max_length=255)
+    location = models.CharField(max_length=255)
+    created_date = models.DateTimeField(auto_now_add=True)
+    category = models.ForeignKey(PortfolioCategory, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='portfolio_images/', blank=True, null=True)
 
+    class Meta:
+        verbose_name = _("Portfolio")
+        verbose_name_plural = _("Portfolios")

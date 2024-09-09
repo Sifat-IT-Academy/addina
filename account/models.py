@@ -9,6 +9,7 @@ class User(AbstractUser):
     phone_number = models.CharField(max_length=15, blank=True, null=True)
     birth_date = models.DateField(blank=True, null=True)
     image = models.ImageField(upload_to='user_images/', blank=True, null=True)
+    
 
     def clean(self):
         phone_number_pattern = r'^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$'

@@ -1,7 +1,12 @@
 from django.db import models
 from account.models import User
+from django.utils.translation import gettext_lazy as _
+
 
 class Contact(models.Model):
-    id = models.BigAutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    message = models.CharField(max_length=100)
+    message = models.TextField()
+
+    class Meta:
+        verbose_name = _("Contact")
+        verbose_name_plural = _("Contacts")

@@ -41,3 +41,4 @@ class ProductComment(models.Model):
     comment = models.CharField(max_length=150)
     create_date = models.DateTimeField(auto_now=True)  
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    rating = models.BigIntegerField()
