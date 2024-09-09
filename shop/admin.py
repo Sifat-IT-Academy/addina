@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Product,ProductCategory,ProductComment
 from django.utils.html import format_html
-
+#salom
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('image','title','description')
