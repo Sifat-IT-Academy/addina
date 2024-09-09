@@ -4,7 +4,6 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 
-
 <!-- Mirrored from gramentheme.com/html/addina/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Aug 2024 05:34:41 GMT -->
 <head>
    <meta charset="utf-8">
@@ -326,29 +325,20 @@
                         </ul>
                      </div> -->
                      <div class="header-lang-item header-lang">
-                        <span class="header-lang-toggle text-white" id="header-lang-toggle">
-                            {% get_current_language as LANGUAGE_CODE %}
-                            {% get_language_info for LANGUAGE_CODE as lang %}
-                            {{ lang.name_local }}
-                        </span>
-                        <ul class="">
-                            <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
-                                <input name="next" type="hidden" value="{{ redirect_to }}">
-                                <select name="language" onchange="this.form.submit()">
-                                    {% get_available_languages as LANGUAGES %}
-                                    {% get_language_info_list for LANGUAGES as languages %}
-                                    {% for language in languages %}
-                                        <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                                            {{ language.name_local }} ({{ language.code }})
-                                        </option>
-                                    {% endfor %}
-                                </select>
-                            </form>
-                        </ul>
+                        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                            <input name="next" type="hidden" value="{{ redirect_to }}">
+                            <select style="background-color: transparent; border: none; outline: none; color: #fff;" name="language" onchange="this.form.submit()">
+                                {% get_available_languages as LANGUAGES %}
+                                {% get_language_info_list for LANGUAGES as languages %}
+                                {% for language in languages %}
+                                    <option style="color: #000;" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                        {{ language.name_local }} ({{ language.code }})
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </form>
                     </div>
                     
-
-
                      <div class="header-lang-item tp-header-currency">
                         <span class="header-currency-toggle text-white" id="header-currency-toggle">USD</span>
                         <ul>
@@ -402,36 +392,24 @@
                               <nav id="mobile-menu">
                                  <ul>
                                     <li class="has-dropdown">
-                                       <a href="index.html">Home</a>
-                                       <ul class="submenu">
-                                          <li><a href="pharmacy.html">Pharmacy Store</a></li>
-                                          <li><a href="index.html">Furniture Store</a></li>
-                                          <li><a href="grocery.html">Grocery Store</a></li>
-                                       </ul>
+                                       <a href="{% url 'home-page' %}">Home</a>
                                     </li>
                                     <li>
                                        <a href="about.html">About</a>
                                     </li>
                                     <li class="has-dropdown">
-                                       <a href="{% url 'product-page' %}">Shop</a>
+                                       <a href="{% url 'product-page' %}">Product</a>
                                        <ul class="submenu">
-                                          <li><a href="{% url 'product-page' %}">Product</a></li>
                                           <li><a href="{% url 'product-details-page' %}">Product Details</a></li>
-                                          <li><a href="wishlist.html">Wishlist</a></li>
-                                          <li><a href="{% url 'cart-page' %}">Cart</a></li>
-                                          <li><a href="checkout.html">Checkout</a></li>
                                        </ul>
                                     </li>
                                     <li class="has-dropdown">
-                                       <a href="about.html">Pages</a>
+                                       <a href="{% url 'cart-page' %}">Cart</a>
+                                    </li>
+                                    <li class="has-dropdown">
+                                       <a href="{% url 'portfolio-page' %}">Portfolio</a>
                                        <ul class="submenu">
-                                          <li><a href="about.html">About Us</a></li>
-                                          <li><a href="store.html">Find a Store</a></li>
-                                          <li><a href="{% url 'portfolio-page' %}">Portfolio</a></li>
                                           <li><a href="{% url 'portfolio-details-page' %}">Portfolio Details</a></li>
-                                          <li><a href="faq.html">Faq</a></li>
-                                          <li><a href="coming-soon.html">Coming Soon</a></li>
-                                          <li><a href="error.html">404</a></li>
                                        </ul>
                                     </li>
                                     <li class="has-dropdown">
