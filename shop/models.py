@@ -12,7 +12,7 @@ class ProductCategory(models.Model):
 class Product(models.Model):
     id = models.BigAutoField(primary_key=True)
     title = models.CharField(max_length=100)
-    rating = models.BigIntegerField()
+    rating = models.FloatField(default=3)
     price = models.FloatField()
     discount_price = models.FloatField(null=True, blank=True)
     description = RichTextField()
@@ -41,4 +41,4 @@ class ProductComment(models.Model):
     comment = models.CharField(max_length=150)
     create_date = models.DateTimeField(auto_now=True)  
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    rating = models.BigIntegerField()
+    rating = models.FloatField()
