@@ -19,7 +19,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
-    # 'jazzmin',
+    'jazzmin',
     'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -278,4 +278,3 @@ AUTH_USER_MODEL = 'account.User'
 #     # Add a language dropdown into the admin
 #     "language_chooser": False,
 # }
-

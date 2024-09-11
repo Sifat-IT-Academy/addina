@@ -4,10 +4,10 @@ from django.utils.html import format_html
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('image','title','description')
-    readonly_fields = ['id']
+    list_display = ('img','title','description','rating')
+    readonly_fields = ['id','rating']
      
-    def image(self, obj):
+    def img(self, obj):
          return format_html('<img width="100" height="100" src="{}"style="border-radius: 50%;" />'.format(obj.image.url))
 
 admin.site.register(ProductCategory)
