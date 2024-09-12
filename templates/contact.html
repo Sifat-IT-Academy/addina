@@ -80,55 +80,33 @@
                   </div>
                   <div class="col-xxl-6 col-xl-6">
                      <div class="contact-from">
-                        <form action="#">
+                        <form action="{% url 'contact-page' %}"  method="post">
+                           {% csrf_token %}
                            <div class="row">
                               <div class="col-lg-6">
                                  <div class="contact__from-input">
-                                    <input type="text" placeholder="Full Name*">
+                                    <input type="text"  name='name' placeholder="Full Name*">
                                  </div>
                               </div>
                               <div class="col-lg-6">
                                  <div class="contact__from-input">
-                                    <input type="text" placeholder="Email Address*">
+                                    <input type="text" name='email' placeholder="Email Address*">
                                  </div>
                               </div>
                               <div class="col-lg-6">
                                  <div class="contact__from-input">
-                                    <input type="tel" placeholder="Phone Number">
+                                    <input type="tel" name='phone' placeholder="Phone Number">
                                  </div>
                               </div>
                               <div class="col-lg-6">
                                  <div class="contact__from-input">
-                                    <input type="date">
+                                    <input type="date" name='birthday'>
                                  </div>
                               </div>
-                              <div class="col-lg-6">
-                                 <div class="contact__select mb-20">
-                                    <select>
-                                       <option value="0">Pediatric Clinic</option>
-                                       <option value="2">DOGRIsis Clinic</option>
-                                       <option value="3">Cardiac Clinic</option>
-                                       <option value="1">Medical Pharmacy</option>
-                                       <option value="1">Rehabilitation Therapy</option>
-                                       <option value="1">Laryngological Clinic</option>
-                                    </select>
-                                 </div>
-                              </div>
-                              <div class="col-lg-6">
-                                 <div class="contact__select mb-20">
-                                    <select>
-                                       <option value="0">Choose Doctor</option>
-                                       <option value="2">Dr. Jalen Kothenbeutel</option>
-                                       <option value="3">Dr. Jade Dayal</option>
-                                       <option value="1">Dr. Zander Nishida</option>
-                                       <option value="1">Dr. Mattie Tellers</option>
-                                       <option value="1">Dr. Jade Dayal </option>
-                                    </select>
-                                 </div>
-                              </div>
+                             
                               <div class="col-lg-12">
                                  <div class="contact__from-input">
-                                    <textarea name="Message" placeholder="Your Message"></textarea>
+                                    <textarea name="content" placeholder="Your Message"></textarea>
                                  </div>
                               </div>
                               <div class="col-12">
