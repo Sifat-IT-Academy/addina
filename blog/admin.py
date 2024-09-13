@@ -1,15 +1,18 @@
 from django.contrib import admin
 from django.shortcuts import render
-from .models import Blog,BlogCategory,BlogComment
+from .models import Blog,BlogCategory,BlogComment,BlogTag
 from django.utils.html import format_html
+
+admin.site.register(BlogTag)
 
 @admin.register(Blog)
 class BlogAdmin(admin.ModelAdmin):
-    list_display = ("image","title","description","user","created_date","category")
+    list_display = ("rasm","title","user","created_date","category")
     readonly_fields = ['id']
 
-    def img(self, obj):
+    def rasm(self, obj):
          return format_html('<img width="100" height="100" src="{}"style="border-radius: 50%;" />'.format(obj.image.url))
+    
 @admin.register(BlogCategory)
 class BlogCategoryAdmin(admin.ModelAdmin):
     list_display = ("name",)
