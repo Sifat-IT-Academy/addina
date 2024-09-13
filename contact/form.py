@@ -1,6 +1,7 @@
 from django import forms
 from .models import Contact
 import re
+
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
@@ -22,11 +23,11 @@ class ContactForm(forms.ModelForm):
 
     # Agar siz telefon raqamining formatini tekshirmoqchi bo'lsangiz
    
-def clean_phone(self):
-    phone = self.cleaned_data.get('phone')
-    
-    # Telefon raqamining formatini tekshiradigan yangilangan regex
-    if phone and not re.match(r'^\+998\d{9}$', phone):
-        raise forms.ValidationError("Phone number is in the wrong format.")
-    
-    return phone
+    def clean_phone(self):
+        phone = self.cleaned_data.get('phone')
+        
+        # Telefon raqamining formatini tekshiradigan yangilangan regex
+        if phone and not re.match(r'^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$', phone):
+            raise forms.ValidationError("Phone number is in the wrong format.")
+        
+        return phone
