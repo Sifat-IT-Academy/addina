@@ -37,7 +37,7 @@
                      {% for blog in blogs %}
                      <article class="postbox__item mb-50 transition-3">
                         <div class="postbox__thumb w-img mb-30">
-                           <a href="blog-details.html">
+                           <a href="{% url 'blog-details-page' %}">
                               <img src="{{blog.image.url}}" alt="">
                            </a>
                         </div>
@@ -71,17 +71,20 @@
                                  </svg> {{blog.created_date}}
                               </span>
                               <span>
+                                 
                                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path
                                        d="M12.9718 6.66668C12.9741 7.54659 12.769 8.4146 12.3732 9.20001C11.9039 10.1412 11.1825 10.9328 10.2897 11.4862C9.39697 12.0396 8.36813 12.3329 7.31844 12.3333C6.4406 12.3356 5.57463 12.13 4.79106 11.7333L1 13L2.26369 9.20001C1.86791 8.4146 1.66281 7.54659 1.6651 6.66668C1.66551 5.61452 1.95815 4.58325 2.51025 3.68838C3.06236 2.79352 3.85211 2.0704 4.79106 1.60002C5.57463 1.20331 6.4406 0.997725 7.31844 1.00002H7.65099C9.03729 1.07668 10.3467 1.66319 11.3284 2.64726C12.3102 3.63132 12.8953 4.94378 12.9718 6.33334V6.66668Z"
                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                                        stroke-linejoin="round" />
-                                 </svg>35
+                                 </svg>
+                                 <!-- 35 -->
+                                 {{ blogs.comments.count }}
                               </span>
                            </div>
                            <h3 class="postbox__title">
-                              <a href="blog-details.html">{{blog.title}}</a>
+                              <a href="{% url 'blog-details-page' %}">{{blog.title}}</a>
                            </h3>
                            <div class="postbox__text">
                               {{blog.description | safe | truncatewords:29}}
@@ -96,24 +99,33 @@
                      
                      <div class="pagination__wrapper">
                         <div class="bd-basic__pagination d-flex align-items-center justify-content-center">
-                           <nav>
-                              <ul>
-                                 <li>
-                                    <a href="#">1</a>
-                                 </li>
-                                 <li>
-                                    <a href="#">2</a>
-                                 </li>
-                                 <li>
-                                    <span class="current">3</span>
-                                 </li>
-                                 <li>
-                                    <a href="#"><i class="fa-regular fa-angle-right"></i></a>
-                                 </li>
-                              </ul>
-                           </nav>
+                            <nav>
+                                <ul>
+                                    {% if page_obj.has_previous %}
+                                        <li><a href="?page=1">«</a></li> 
+                                    {% else %}
+                                        <li class="disabled"><span>«</span></li>
+                                       
+                                    {% endif %}
+                     
+                                    {% for num in page_obj.paginator.page_range %}
+                                        {% if num == page_obj.number %}
+                                            <li><span class="current">{{ num }}</span></li>
+                                        {% else %}
+                                            <li><a href="?page={{ num }}">{{ num }}</a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                     
+                                    {% if page_obj.has_next %}
+                                        <li><a href="?page={{ page_obj.paginator.num_pages }}">»</a></li> 
+                                    {% else %}
+                                        <li class="disabled"><span>›››</span></li>
+                                    {% endif %}
+                                </ul>
+                            </nav>
                         </div>
                      </div>
+                     
                   </div>
                </div>
                <div class="col-xxl-4 col-lg-4">
@@ -144,11 +156,11 @@
                         <h3 class="sidebar__widget-title">Category</h3>
                         <div class="sidebar__widget-content">
                            <ul>
-                              <li><a href="blog.html">Business <span>10</span></a></li>
-                              <li><a href="blog.html">Cleaning <span>08</span></a></li>
-                              <li><a href="blog.html">Consultant <span>24</span></a></li>
-                              <li><a href="blog.html">Creative <span>37</span></a></li>
-                              <li><a href="blog.html">Technology <span>103</span></a></li>
+                              <li><a href="{% url 'blog-page' %}">Business <span>10</span></a></li>
+                              <li><a href="{% url 'blog-page' %}">Cleaning <span>08</span></a></li>
+                              <li><a href="{% url 'blog-page' %}">Consultant <span>24</span></a></li>
+                              <li><a href="{% url 'blog-page' %}">Creative <span>37</span></a></li>
+                              <li><a href="{% url 'blog-page' %}">Technology <span>103</span></a></li>
                            </ul>
                         </div>
                      </div>
@@ -158,11 +170,11 @@
                            <div class="sidebar__post">
                               <div class="rc__post d-flex align-items-center">
                                  <div class="rc__post-thumb">
-                                    <a href="blog-details.html"><img src="{% static 'imgs/blog/blog-11.jpg' %}" alt=""></a>
+                                    <a href="{% url 'blog-details-page' %}"><img src="{% static 'imgs/blog/blog-11.jpg' %}" alt=""></a>
                                  </div>
                                  <div class="rc__post-content">
                                     <h4 class="rc__post-title">
-                                       <a href="blog-details.html">Business meeting 2021 in San Francisco</a>
+                                       <a href="{% url 'blog-details-page' %}">Business meeting 2021 in San Francisco</a>
                                     </h4>
                                     <div class="rc__meta">
                                        <span>
@@ -181,11 +193,11 @@
                               </div>
                               <div class="rc__post d-flex align-items-center">
                                  <div class="rc__post-thumb">
-                                    <a href="blog-details.html"><img src="{% static 'imgs/blog/blog-12.jpg' %}" alt=""></a>
+                                    <a href="{% url 'blog-details-page' %}"><img src="{% static 'imgs/blog/blog-12.jpg' %}" alt=""></a>
                                  </div>
                                  <div class="rc__post-content">
                                     <h4 class="rc__post-title">
-                                       <a href="blog-details.html">Developing privacy user-centric apps</a>
+                                       <a href="{% url 'blog-details-page' %}">Developing privacy user-centric apps</a>
                                     </h4>
                                     <div class="rc__meta">
                                        <span>
@@ -204,11 +216,11 @@
                               </div>
                               <div class="rc__post d-flex align-items-center">
                                  <div class="rc__post-thumb">
-                                    <a href="blog-details.html"><img src="{% static 'imgs/blog/blog-13.jpg' %}" alt=""></a>
+                                    <a href="{% url 'blog-details-page' %}"><img src="{% static 'imgs/blog/blog-13.jpg' %}" alt=""></a>
                                  </div>
                                  <div class="rc__post-content">
                                     <h4 class="rc__post-title">
-                                       <a href="blog-details.html">Starting and Growing Web Design in 2022</a>
+                                       <a href="{% url 'blog-details-page' %}">Starting and Growing Web Design in 2022</a>
                                     </h4>
                                     <div class="rc__meta">
                                        <span>

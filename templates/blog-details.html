@@ -5,7 +5,6 @@
 
    <!-- Body main wrapper start -->
    <main>
-
       <!-- Breadcrumb area start  -->
       <div class="breadcrumb__area theme-bg-1 p-relative z-index-11 pt-95 pb-95">
          <div class="breadcrumb__thumb" data-background="{% static 'imgs/bg/breadcrumb-bg.jpg' %}"></div>
@@ -37,7 +36,7 @@
                   <div class="postbox__wrapper theme-bg-2">
                      <article class="postbox__item mb-50 transition-3">
                         <div class="postbox__thumb w-img mb-30">
-                           <a href="blog-details.html">
+                           <a href="{% url 'blog-details-page' %}">
                               <img src="{% static 'imgs/blog/postbox/postbox-01.jpg' %}" alt="">
                            </a>
                         </div>
@@ -81,7 +80,7 @@
                               </span>
                            </div>
                            <h3 class="postbox__title">
-                              <a href="blog-details.html">How to Make your Home a Showplace</a>
+                              <a href="{% url 'blog-details-page' %}">How to Make your Home a Showplace</a>
                            </h3>
                            <div class="postbox__text">
                               <p>Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in
@@ -292,11 +291,11 @@
                         <h3 class="sidebar__widget-title">Category</h3>
                         <div class="sidebar__widget-content">
                            <ul>
-                              <li><a href="blog.html">Business <span>10</span></a></li>
-                              <li><a href="blog.html">Cleaning <span>08</span></a></li>
-                              <li><a href="blog.html">Consultant <span>24</span></a></li>
-                              <li><a href="blog.html">Creative <span>37</span></a></li>
-                              <li><a href="blog.html">Technology <span>103</span></a></li>
+                              <li><a href="{% url 'blog-page' %}">Business <span>10</span></a></li>
+                              <li><a href="{% url 'blog-page' %}">Cleaning <span>08</span></a></li>
+                              <li><a href="{% url 'blog-page' %}">Consultant <span>24</span></a></li>
+                              <li><a href="{% url 'blog-page' %}">Creative <span>37</span></a></li>
+                              <li><a href="{% url 'blog-page' %}">Technology <span>103</span></a></li>
                            </ul>
                         </div>
                      </div>
@@ -306,11 +305,11 @@
                            <div class="sidebar__post">
                               <div class="rc__post d-flex align-items-center">
                                  <div class="rc__post-thumb">
-                                    <a href="blog-details.html"><img src="{% static 'imgs/blog/blog-11.jpg' %}" alt=""></a>
+                                    <a href="{% url 'blog-details-page' %}"><img src="{% static 'imgs/blog/blog-11.jpg' %}" alt=""></a>
                                  </div>
                                  <div class="rc__post-content">
                                     <h4 class="rc__post-title">
-                                       <a href="blog-details.html">Business meeting 2021 in San Francisco</a>
+                                       <a href="{% url 'blog-details-page' %}">Business meeting 2021 in San Francisco</a>
                                     </h4>
                                     <div class="rc__meta">
                                        <span>
@@ -329,11 +328,11 @@
                               </div>
                               <div class="rc__post d-flex align-items-center">
                                  <div class="rc__post-thumb">
-                                    <a href="blog-details.html"><img src="{% static 'imgs/blog/blog-12.jpg' %}" alt=""></a>
+                                    <a href="{% url 'blog-details-page' %}"><img src="{% static 'imgs/blog/blog-12.jpg' %}" alt=""></a>
                                  </div>
                                  <div class="rc__post-content">
                                     <h4 class="rc__post-title">
-                                       <a href="blog-details.html">Developing privacy user-centric apps</a>
+                                       <a href="{% url 'blog-details-page' %}">Developing privacy user-centric apps</a>
                                     </h4>
                                     <div class="rc__meta">
                                        <span>
@@ -352,11 +351,11 @@
                               </div>
                               <div class="rc__post d-flex align-items-center">
                                  <div class="rc__post-thumb">
-                                    <a href="blog-details.html"><img src="{% static 'imgs/blog/blog-13.jpg' %}" alt=""></a>
+                                    <a href="{% url 'blog-details-page' %}"><img src="{% static 'imgs/blog/blog-13.jpg' %}" alt=""></a>
                                  </div>
                                  <div class="rc__post-content">
                                     <h4 class="rc__post-title">
-                                       <a href="blog-details.html">Starting and Growing Web Design in 2022</a>
+                                       <a href="{% url 'blog-details-page' %}">Starting and Growing Web Design in 2022</a>
                                     </h4>
                                     <div class="rc__meta">
                                        <span>

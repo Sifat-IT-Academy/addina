@@ -35,140 +35,22 @@
             <div class="row g-5">
                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
                   <div class="project-item">
+                     {% for portfolio in portfolio %}
                      <div class="project-thumb w-img">
-                        <img src="{% static 'imgs/project/project-01.jpg' %}" alt="">
+                        <img src="{{ portfolio.image.url }}" alt="">
                      </div>
                      <div class="project-content-inner">
                         <div class="project-content">
-                           <span>Decoration</span>
-                           <h4><a href="portfolio-details.html">Mestre Beardom </a></h4>
+                           <span>{{ portfolio.title }}</span>
+                           <h4><a href="{% url 'portfolio-details-page' %}">{{ portfolio.description | safe | truncatewords:10 }}</a></h4>
                         </div>
-                        <a class="round-link-40" href="portfolio-details.html"><i
-                              class="fa-regular fa-angle-right"></i></a>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
-                  <div class="project-item">
-                     <div class="project-thumb w-img">
-                        <img src="{% static 'imgs/project/project-02.jpg' %}" alt="">
-                     </div>
-                     <div class="project-content-inner">
-                        <div class="project-content">
-                           <span>Decoration</span>
-                           <h4><a href="portfolio-details.html">Mestre Beardom </a></h4>
-                        </div>
-                        <a class="round-link-40" href="portfolio-details.html"><i
-                              class="fa-regular fa-angle-right"></i></a>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
-                  <div class="project-item">
-                     <div class="project-thumb w-img">
-                        <img src="{% static 'imgs/project/project-03.jpg' %}" alt="">
-                     </div>
-                     <div class="project-content-inner">
-                        <div class="project-content">
-                           <span>Decoration</span>
-                           <h4><a href="portfolio-details.html">Mestre Beardom </a></h4>
-                        </div>
-                        <a class="round-link-40" href="portfolio-details.html"><i
-                              class="fa-regular fa-angle-right"></i></a>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
-                  <div class="project-item">
-                     <div class="project-thumb w-img">
-                        <img src="{% static 'imgs/project/project-04.jpg' %}" alt="">
-                     </div>
-                     <div class="project-content-inner">
-                        <div class="project-content">
-                           <span>Decoration</span>
-                           <h4><a href="portfolio-details.html">Mestre Beardom </a></h4>
-                        </div>
-                        <a class="round-link-40" href="portfolio-details.html"><i
-                              class="fa-regular fa-angle-right"></i></a>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
-                  <div class="project-item">
-                     <div class="project-thumb w-img">
-                        <img src="{% static 'imgs/project/project-05.jpg' %}" alt="">
-                     </div>
-                     <div class="project-content-inner">
-                        <div class="project-content">
-                           <span>Decoration</span>
-                           <h4><a href="portfolio-details.html">Mestre Beardom </a></h4>
-                        </div>
-                        <a class="round-link-40" href="portfolio-details.html"><i
-                              class="fa-regular fa-angle-right"></i></a>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
-                  <div class="project-item">
-                     <div class="project-thumb w-img">
-                        <img src="{% static 'imgs/project/project-06.jpg' %}" alt="">
-                     </div>
-                     <div class="project-content-inner">
-                        <div class="project-content">
-                           <span>Decoration</span>
-                           <h4><a href="portfolio-details.html">Mestre Beardom </a></h4>
-                        </div>
-                        <a class="round-link-40" href="portfolio-details.html"><i
-                              class="fa-regular fa-angle-right"></i></a>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
-                  <div class="project-item">
-                     <div class="project-thumb w-img">
-                        <img src="{% static 'imgs/project/project-07.jpg' %}" alt="">
-                     </div>
-                     <div class="project-content-inner">
-                        <div class="project-content">
-                           <span>Decoration</span>
-                           <h4><a href="portfolio-details.html">Mestre Beardom </a></h4>
-                        </div>
-                        <a class="round-link-40" href="portfolio-details.html"><i
-                              class="fa-regular fa-angle-right"></i></a>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
-                  <div class="project-item">
-                     <div class="project-thumb w-img">
-                        <img src="{% static 'imgs/project/project-08.jpg' %}" alt="">
-                     </div>
-                     <div class="project-content-inner">
-                        <div class="project-content">
-                           <span>Decoration</span>
-                           <h4><a href="portfolio-details.html">Mestre Beardom </a></h4>
-                        </div>
-                        <a class="round-link-40" href="portfolio-details.html"><i
-                              class="fa-regular fa-angle-right"></i></a>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
-                  <div class="project-item">
-                     <div class="project-thumb w-img">
-                        <img src="{% static 'imgs/project/project-09.jpg' %}" alt="">
-                     </div>
-                     <div class="project-content-inner">
-                        <div class="project-content">
-                           <span>Decoration</span>
-                           <h4><a href="portfolio-details.html">Mestre Beardom </a></h4>
-                        </div>
-                        <a class="round-link-40" href="portfolio-details.html"><i
+                        <a class="round-link-40" href="{% url 'portfolio-details-page' %}"><i
                               class="fa-regular fa-angle-right"></i></a>
                      </div>
                   </div>
                </div>
             </div>
+            {% endfor %}
             <div class="row">
                <div class="col-xxl-12">
                   <div class="pagination__wrapper mt-50">

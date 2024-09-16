@@ -26,8 +26,9 @@ class Blog(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(BlogCategory, on_delete=models.CASCADE)
 
-    def comments_count():
-        pass
+    def comments_count(self):
+        # pass
+        return self.comments.count()
 
     class Meta:
         verbose_name = _("Blog")
@@ -44,3 +45,12 @@ class BlogComment(models.Model):
         verbose_name = _("Blog Comment")
         verbose_name_plural = _("Blog Comments")
 
+
+class Blog_details(models.Model):
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    detail_content = RichTextField()
+    image = models.ImageField(upload_to='blog_images/', blank=True, null=True)
+
+    def __str__(self):
+        return f"Details for {self.blog.title}"
+    
