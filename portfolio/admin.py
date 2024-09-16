@@ -4,4 +4,9 @@ from portfolio.models import Portfolio , PortfolioCategory
 # Register your models here.
 # Samandar va Norbek
 
-admin.site.register((Portfolio , PortfolioCategory))
+@admin.register(PortfolioCategory)
+class PortfolioCategoryAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+@admin.register(Portfolio)
+class PortfolioAdmin(admin.ModelAdmin):
+    list_display = ("user", "category", "title")

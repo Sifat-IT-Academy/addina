@@ -1,10 +1,14 @@
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from .views import blog_details_view, blog_grid_view,BlogListView
+from .views import *
 
 urlpatterns = [
-    path('blog-details/',blog_details_view,name='blog-details-page'),
-    path('blog-grid/',blog_grid_view,name='blog-grid-page'),
-    path('blog/',BlogListView.as_view(),name='blog-page'),
+    path('', BlogListView.as_view(), name='blog-page'),
+    path('category/<int:category_id>/', BlogListView.as_view(), name='blog-page'),
+    path('tag/<int:tag_id>/', BlogListView.as_view(), name='blogs_by_tag'),
+    # path('blog/<int:id>/',blog_detail, name='blog_detail'),
+    path('blog/<int:pk>/', BlogDetailListView.as_view(), name='blog_detail'),
+
+
 ]
