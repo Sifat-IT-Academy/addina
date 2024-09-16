@@ -25,7 +25,7 @@ class BlogCategoryAdmin(admin.ModelAdmin):
 
 @admin.register(BlogComment)
 class BlogCommentAdmin(admin.ModelAdmin):
-    list_display = ("user","comment","created_date","user","created_date","blog")
+    list_display = ("author","email","body","created_at","active","blog")
     readonly_fields = ['id']
 
     def img(self, obj):

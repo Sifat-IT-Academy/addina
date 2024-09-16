@@ -16,8 +16,8 @@ class ContactFormView(FormView):
         phone = form.cleaned_data.get('phone')
         birthday=form.cleaned_data.get('birthday')
         content = form.cleaned_data.get('content')
-        text = f"Name: {name}\nEmail: {email}\nPhone_number:{phone}\nBirthday:{birthday}\nContent: {content}"
-        send_message(text)
+        text = f"Name : {name}\nEmail : {email}\nPhone number : {phone}\nBirthday : {birthday}\nContent : {content}"
+        send_message(text)  
         
         Contact.objects.create(name=name, email=email, content=content,phone=phone,birthday=birthday,user=self.request.user)
         messages.success(self.request, "Sizning so'rovingiz adminga yuborildi.✅")
