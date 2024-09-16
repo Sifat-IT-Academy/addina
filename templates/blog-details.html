@@ -103,166 +103,131 @@
                                     <img src="{% static 'imgs/blog/postbox/postbox-04.jpg' %}" alt="">
                                  </div>
                               </div>
-                              <div class="col-lg-6">
-                                 <div class="postbox__features-thumb w-img">
-                                    <img src="{% static 'imgs/blog/postbox/postbox-05.jpg' %}" alt="">
-                                 </div>
-                              </div>
-                           </div>
+                          </div>
+                      </article>
+              
+                    <!-- blog/templates/blog-details.html -->
+
+<div class="postbox__comment-wrapper">
+    <div class="postbox__comment mb-60">
+        <h3 class="postbox__comment-title">Comments ({{ comments|length }})</h3>
+        <ul>
+            {% for comment in comments %}
+            <li>
+                <div class="postbox__comment-box d-sm-flex align-items-start">
+                    <div class="postbox__comment-info">
+                        <div class="postbox__comment-avatar">
+                            <img src="{% static 'imgs/user/user-01.png' %}" alt="">
                         </div>
-                        <div class="features__list">
-                           <ul>
-                              <li>Reduced symptoms of anxiety and depression.</li>
-                              <li>Improved stress management: Mindfulness meditation has been shown.</li>
-                              <li>Better emotional regulation: Mindfulness practice.</li>
-                              <li>Increased self-awareness: Mindfulness meditation can help individuals.</li>
-                           </ul>
+                    </div>
+                    <div class="postbox__comment-text">
+                        <div class="postbox__comment-name">
+                            <span class="post-meta">{{ comment.created_at|date:"F d, Y" }}</span>
+                            <h5><a href="#">{{ comment.author }}</a></h5>
                         </div>
-                     </div>
-                     <div class="postbox__quote mb-35">
-                        <blockquote>
-                           <p>“I try as much as possible to give you a great basic product and what comes out, I feel,
-                              is really amazing.”</p>
-                           <div class="blog__quote-author d-flex justify-content-end">
-                              <div class="quote__author-info">
-                                 <h4>Keith Griffin</h4>
-                                 <span>Doctor</span>
-                              </div>
-                           </div>
-                        </blockquote>
-                     </div>
-                     <div class="postbox__share-wrapper mb-60">
-                        <div class="row align-items-center">
-                           <div class="col-xl-7">
-                              <div class="tagcloud tagcloud-sm">
-                                 <span>Tags:</span>
-                                 <a href="#">Blog</a>
-                                 <a href="#">Creative</a>
-                                 <a href="#">Portfoilo</a>
-                                 <a href="#">Harry</a>
-                              </div>
-                           </div>
-                           <div class="col-xl-5">
-                              <div class="postbox__share text-xl-end">
-                                 <span>Share On:</span>
-                                 <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                                 <a href="#"><i class="fab fa-twitter"></i></a>
-                                 <a href="#"><i class="fab fa-facebook-f"></i></a>
-                              </div>
-                           </div>
+                        <p>{{ comment.body }}</p>
+                        <div class="postbox__comment-reply">
+                            <a href="#" class="reply-toggle" data-comment-id="{{ comment.id }}">Reply</a>
                         </div>
-                     </div>
-                     <div class="postbox__comment-wrapper">
-                        <div class="postbox__comment mb-60">
-                           <h3 class="postbox__comment-title">Comments (2)</h3>
-                           <ul>
-                              <li>
-                                 <div class="postbox__comment-box d-sm-flex align-items-start">
-                                    <div class="postbox__comment-info">
-                                       <div class="postbox__comment-avatar">
-                                          <img src="{% static 'imgs/user/user-01.png' %}" alt="">
-                                       </div>
-                                    </div>
-                                    <div class="postbox__comment-text ">
-                                       <div class="postbox__comment-name">
-                                          <span class="post-meta"> July 14, 2022</span>
-                                          <h5><a href="#">Eleanor Fant</a></h5>
-                                       </div>
-                                       <p>One’s of the best template out of there. design, code quality, updates etc
-                                          everything you needs guys, buy it you won’t regret it!</p>
-                                       <div class="postbox__comment-reply">
-                                          <a href="#">Reply</a>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <ul class="children">
-                                    <li>
-                                       <div class="postbox__comment-box d-sm-flex align-items-start">
-                                          <div class="postbox__comment-info">
-                                             <div class="postbox__comment-avatar">
-                                                <img src="{% static 'imgs/user/user-02.png' %}" alt="">
-                                             </div>
-                                          </div>
-                                          <div class="postbox__comment-text ">
-                                             <div class="postbox__comment-name">
-                                                <span class="post-meta"> July 14, 2022</span>
-                                                <h5><a href="#">Alexander Ljung</a></h5>
-                                             </div>
-                                             <p>This theme is super awesome! But I had one small issue with link option
-                                                in parallax portfolio. The other day! </p>
-                                             <div class="postbox__comment-reply">
-                                                <a href="#">Reply</a>
-                                             </div>
-                                          </div>
-                                       </div>
-                                    </li>
-                                 </ul>
-                              </li>
-                              <li>
-                                 <div class="postbox__comment-box d-sm-flex align-items-start">
-                                    <div class="postbox__comment-info">
-                                       <div class="postbox__comment-avatar">
-                                          <img src="{% static 'imgs/user/user-05.png' %}" alt="">
-                                       </div>
-                                    </div>
-                                    <div class="postbox__comment-text ">
-                                       <div class="postbox__comment-name">
-                                          <span class="post-meta"> July 14, 2022</span>
-                                          <h5><a href="#">Thelma J. Hunter</a></h5>
-                                       </div>
-                                       <p>His many legs, pitifully thin compared with the size of the rest of him, waved
-                                          about helplessly as he looked</p>
-                                       <div class="postbox__comment-reply">
-                                          <a href="#">Reply</a>
-                                       </div>
-                                    </div>
-                                 </div>
-                              </li>
-                           </ul>
+                    </div>
+                </div>
+                <ul class="children">
+                    {% for reply in comment.replies.all %}
+                    <li>
+                        <div class="postbox__comment-box d-sm-flex align-items-start">
+                            <div class="postbox__comment-info">
+                                <div class="postbox__comment-avatar">
+                                    <img src="{% static 'imgs/user/user-02.png' %}" alt="">
+                                </div>
+                            </div>
+                            <div class="postbox__comment-text">
+                                <div class="postbox__comment-name">
+                                    <span class="post-meta">{{ reply.created_at|date:"F d, Y" }}</span>
+                                    <h5><a href="#">{{ reply.user.username }}</a></h5>
+                                </div>
+                                <p>{{ reply.body }}</p>
+                            </div>
                         </div>
-                        <div class="postbox__comment-form">
-                           <h3 class="postbox__comment-form-title">Leave A Reply</h3>
-                           <p>Your email address will not be published. Required fields are marked *</p>
-                           <form action="#">
-                              <div class="row">
-                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-                                    <div class="postbox__comment-input">
-                                       <input type="text" placeholder="Name*">
-                                    </div>
-                                 </div>
-                                 <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6">
-                                    <div class="postbox__comment-input">
-                                       <input type="email" placeholder="Email">
-                                    </div>
-                                 </div>
-                                 <div class="col-xxl-12">
-                                    <div class="postbox__comment-input">
-                                       <textarea placeholder="Your Comment Here..."></textarea>
-                                    </div>
-                                 </div>
-                                 <div class="col-xxl-12">
-                                    <div class="postbox__comment-agree d-flex align-items-start mb-25">
-                                       <input class="e-check-input" type="checkbox" id="e-agree">
-                                       <label class="e-check-label" for="e-agree">Save my name, email, and website in
-                                          this browser for the next time I comment.</label>
-                                    </div>
-                                 </div>
-                                 <div class="col-xxl-12">
-                                    <div class="postbox__comment-btn">
-                                       <button class="fill-btn">
-                                          <span class="fill-btn-inner">
-                                             <span class="fill-btn-normal">Submit Comment</span>
-                                             <span class="fill-btn-hover">Submit Comment</span>
-                                          </span>
-                                       </button>
-                                    </div>
-                                 </div>
-                              </div>
-                           </form>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <!-- Reply form -->
+                <div class="postbox__comment-form reply-form-{{ comment.id }}" style="display: none;">
+                    <h3 class="postbox__comment-form-title">Reply to {{ comment.author }}</h3>
+                    <p>Your email address will not be published. Required fields are marked *</p>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ reply_form.as_p }}
+                        <input type="hidden" name="parent_id" value="{{ comment.id }}">
+                        <div class="col-xxl-12">
+                            <div class="postbox__comment-agree d-flex align-items-start mb-25">
+                                <input class="e-check-input" type="checkbox" id="e-agree">
+                                <label class="e-check-label" for="e-agree">Save my name, email, and website in this browser for the next time I comment.</label>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
+                        <div class="col-xxl-12">
+                            <div class="postbox__comment-btn">
+                                <button class="fill-btn" type="submit" name="reply_form">
+                                    <span class="fill-btn-inner">
+                                        <span class="fill-btn-normal">Submit Reply</span>
+                                        <span class="fill-btn-hover">Submit Reply</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+            {% empty %}
+            <li>No comments yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="postbox__comment-form">
+        <h3 class="postbox__comment-form-title">Leave A Reply</h3>
+        <p>Your email address will not be published. Required fields are marked *</p>
+        <form method="post">
+            {% csrf_token %}
+            {{ comment_form.as_p }}
+            <div class="col-xxl-12">
+                <div class="postbox__comment-agree d-flex align-items-start mb-25">
+                    <input class="e-check-input" type="checkbox" id="e-agree">
+                    <label class="e-check-label" for="e-agree">Save my name, email, and website in this browser for the next time I comment.</label>
+                </div>
+            </div>
+            <div class="col-xxl-12">
+                <div class="postbox__comment-btn">
+                    <button class="fill-btn" type="submit" name="comment_form">
+                        <span class="fill-btn-inner">
+                            <span class="fill-btn-normal">Submit Comment</span>
+                            <span class="fill-btn-hover">Submit Comment</span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+                    
+                </div>
+              </div>
+              <!-- blog/templates/blog-details.html -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.reply-toggle').forEach(function(toggle) {
+            toggle.addEventListener('click', function(event) {
+                event.preventDefault();
+                var commentId = this.dataset.commentId;
+                var replyForm = document.querySelector('.reply-form-' + commentId);
+                if (replyForm) {
+                    replyForm.style.display = replyForm.style.display === 'none' ? 'block' : 'none';
+                }
+            });
+        });
+    });
+    </script>
+        
                <div class="col-xxl-4 col-lg-4">
                   <div class="sidebar__wrapper bd-sticky pl-30">
                      <div class="sidebar__widget mb-20">
@@ -289,6 +254,14 @@
                      </div>
                      <div class="sidebar__widget mb-45">
                         <h3 class="sidebar__widget-title">Category</h3>
+                        <ul>
+                           <li>
+                              <a href="{% url 'blog-page' %}">All
+                                  <span>{{ all_blogs_count }}</span> 
+                              </a>
+                          </li>
+                        </ul>
+                        {% for category in categories  %}
                         <div class="sidebar__widget-content">
                            <ul>
                               <li><a href="{% url 'blog-page' %}">Business <span>10</span></a></li>
@@ -298,9 +271,8 @@
                               <li><a href="{% url 'blog-page' %}">Technology <span>103</span></a></li>
                            </ul>
                         </div>
+                        {% endfor %}
                      </div>
-                     <div class="sidebar__widget mb-45">
-                        <h3 class="sidebar__widget-title">Recent Post</h3>
                         <div class="sidebar__widget-content">
                            <div class="sidebar__post">
                               <div class="rc__post d-flex align-items-center">
@@ -374,18 +346,20 @@
                               </div>
                            </div>
                         </div>
-                     </div>
-                     <div class="sidebar__widget mb-40">
+                    
+                     <div class="sidebar__widget">
                         <h3 class="sidebar__widget-title">Tags</h3>
                         <div class="sidebar__widget-content">
-                           <div class="tagcloud">
-                              <a href="#">Techology</a>
-                              <a href="#">Food</a>
-                              <a href="#">Personality</a>
-                              <a href="#">Life Style</a>
-                              <a href="#">Travel</a>
-                              <a href="#">Nature</a>
-                           </div>
+                           <ul>
+                              {% for tag in tags %}
+                              <li>
+                                  <a href="{% url 'blogs_by_tag' tag.id %}">
+                                      {{ tag.name }}
+                                      <span>{{ tag.blog_count }}</span>
+                                  </a>
+                              </li>
+                              {% endfor %}
+                          </ul>
                         </div>
                      </div>
                   </div>

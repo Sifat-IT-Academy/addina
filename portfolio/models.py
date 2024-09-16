@@ -7,6 +7,9 @@ from django.utils.translation import gettext_lazy as _
 
 class PortfolioCategory(models.Model):
     name = models.CharField(max_length=255)
+    
+    def __str__(self):
+        return self.name
 
     class Meta:
         verbose_name = _("Portfolio Category")
@@ -22,6 +25,9 @@ class Portfolio(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(PortfolioCategory, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='portfolio_images/', blank=True, null=True)
+
+    def __str__(self):
+        return self.category.name
 
     class Meta:
         verbose_name = _("Portfolio")

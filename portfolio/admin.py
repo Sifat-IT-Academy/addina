@@ -6,6 +6,7 @@ from django.utils.html import format_html
 # Register your models here.
 # Samandar va Norbek
 
+
 admin.site.register(( PortfolioCategory))
 
 @admin.register(Portfolio)
@@ -27,3 +28,11 @@ class PortfolioAdmin(admin.ModelAdmin):
         return ""
 
     img.short_description = "Image"
+
+@admin.register(PortfolioCategory)
+class PortfolioCategoryAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+@admin.register(Portfolio)
+class PortfolioAdmin(admin.ModelAdmin):
+    list_display = ("user", "category", "title")
+
