@@ -288,22 +288,25 @@
                            </div>
                         </div>
                      </div>
+                     
                      <div class="sidebar__widget mb-45">
                         <h3 class="sidebar__widget-title">Category</h3>
                         <div class="sidebar__widget-content">
+                           {% for category in categories %}
                            <ul>
-                              <li><a href="blog.html">Business <span>10</span></a></li>
-                              <li><a href="blog.html">Cleaning <span>08</span></a></li>
-                              <li><a href="blog.html">Consultant <span>24</span></a></li>
-                              <li><a href="blog.html">Creative <span>37</span></a></li>
-                              <li><a href="blog.html">Technology <span>103</span></a></li>
+                              <li><a href="#">{{category.name}} <span>{{category.blog_count}}</span></a></li>
                            </ul>
+                           {% endfor %}
                         </div>
+                       
                      </div>
+                     
                      <div class="sidebar__widget mb-45">
                         <h3 class="sidebar__widget-title">Recent Post</h3>
                         <div class="sidebar__widget-content">
+                           
                            <div class="sidebar__post">
+                              
                               <div class="rc__post d-flex align-items-center">
                                  <div class="rc__post-thumb">
                                     <a href="blog-details.html"><img src="{% static 'imgs/blog/blog-11.jpg' %}" alt=""></a>
