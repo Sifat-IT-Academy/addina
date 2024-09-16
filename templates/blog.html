@@ -1,6 +1,21 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %} Blog {% endblock title %}
+{% block search %} 
+<form action="{% url 'blog-page' %}" method="GET">
+    <input type="text" placeholder="Search..." name="q" value="{{ request.GET.q }}">
+    <button type="submit">
+       <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M13.4443 13.4445L16.9999 17" stroke="white" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" />
+          <path
+             d="M15.2222 8.11111C15.2222 12.0385 12.0385 15.2222 8.11111 15.2222C4.18375 15.2222 1 12.0385 1 8.11111C1 4.18375 4.18375 1 8.11111 1C12.0385 1 15.2222 4.18375 15.2222 8.11111Z"
+             stroke="white" stroke-width="2" />
+       </svg>
+    </button>
+ </form>
+ {% endblock search %}
 {% block content %}     
    <!-- Body main wrapper start -->
    <main>

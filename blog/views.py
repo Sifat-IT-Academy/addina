@@ -15,11 +15,16 @@ class BlogListView(ListView):
     def get_queryset(self):
         category_id = self.kwargs.get('category_id')
         tag_id = self.kwargs.get('tag_id')
+        q = self.request.GET.get("q")
+        
 
         if tag_id:
             return Blog.objects.filter(tags__id=tag_id)
         elif category_id:
             return Blog.objects.filter(category__id=category_id)
+        if q:
+            return Blog.objects.filter(title__icontains=q)
+
         return Blog.objects.all()
 
     def get_context_data(self, **kwargs):
