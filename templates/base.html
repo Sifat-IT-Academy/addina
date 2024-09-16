@@ -65,20 +65,6 @@
                   <div class="df-search-close text-center mb-20">
                      <button class="df-search-close-btn df-search-close-btn"></button>
                   </div>
-                  <form action="#">
-                     <div class="df-search-input mb-10">
-                        <input type="text" placeholder="Search for product...">
-                        <button type="submit"><i class="flaticon-search-1"></i></button>
-                     </div>
-                     <div class="df-search-category">
-                        <span>Search by : </span>
-                        <a href="#">Healthline, </a>
-                        <a href="#">COVID-19, </a>
-                        <a href="#">Surgery, </a>
-                        <a href="#">Surgeon, </a>
-                        <a href="#">Medical research</a>
-                     </div>
-                  </form>
                </div>
             </div>
          </div>
@@ -420,19 +406,8 @@
                      </div>
                      <div class="header-right d-inline-flex align-items-center justify-content-end">
                         <div class="header-search d-none d-xxl-block">
-                           <form action="#">
-                              <input type="text" placeholder="Search...">
-                              <button type="submit">
-                                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M13.4443 13.4445L16.9999 17" stroke="white" stroke-width="2"
-                                       stroke-linecap="round" stroke-linejoin="round" />
-                                    <path
-                                       d="M15.2222 8.11111C15.2222 12.0385 12.0385 15.2222 8.11111 15.2222C4.18375 15.2222 1 12.0385 1 8.11111C1 4.18375 4.18375 1 8.11111 1C12.0385 1 15.2222 4.18375 15.2222 8.11111Z"
-                                       stroke="white" stroke-width="2" />
-                                 </svg>
-                              </button>
-                           </form>
+                           {% block search %}{% endblock search %}
+
                         </div>
                         <div class="header-action d-flex align-items-center ml-30">
                            <div class="header-action-item">
