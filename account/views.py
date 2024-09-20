@@ -6,16 +6,22 @@ from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
 
 
-def sign_up(request):
-    if request.method == 'POST':
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request,user)
-            return redirect('home-page')
-    else:
-        form = RegistrationForm()
-    return render(request, 'authtenticate/sign-up.html', {'form':form})
+class RegistrationView(View):
+    template_name = "authtenticate/sign-up.html"
+    form_class = RegistrationForm
+
+    def post(self, request):
+        if request.method == 'POST':
+            form = self.form_class(request.POST)
+            if form.is_valid():
+                user = form.save()
+                login(request,user)
+                return redirect('home-page')
+        return render(request, self.template_name, {'form':form})
+    
+    def get(self, request):
+        form = self.form_class()
+        return render(request,self.template_name, {'form':form})
 
 
 
