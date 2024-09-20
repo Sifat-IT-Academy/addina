@@ -16,7 +16,7 @@
    <link rel="shortcut icon" type="image/x-icon" href="{% static 'imgs/furniture/favicon.png' %}">
 
    <!-- CSS here -->
-   {% block css %} {% endblock css %}
+   <!-- {% block css %} {% endblock css %} -->
    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
    <link rel="stylesheet" href="{% static 'css/meanmenu.min.css' %}">
    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
@@ -469,7 +469,15 @@
       </div>
    </header>
    <!-- Header area end -->
-
+   {% if messages %}
+   <div>
+     {% for message in messages %}
+       <div class="alert alert-success">
+      <h4>{{ message }}</h4>
+       </div>
+     {% endfor %}
+   </div>
+ {% endif %}
 {% block content %}
 {% endblock content %}
 
@@ -588,7 +596,7 @@
  <!-- Footer area end -->
 
  <!-- JS here -->
-  {% block js %} {% endblock js %}
+  <!-- {% block js %} {% endblock js %} -->
  <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
  <script src="{% static 'js/waypoints.min.js' %}"></script>
  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>

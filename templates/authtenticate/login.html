@@ -1,20 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} Register {% endblock title %}
+{% block title %} Login {% endblock title %}
 {% block content %}     
-{% block css %}<link rel="stylesheet" href="{% static 'style.css' %}"> {% endblock css %}
-
  <div class="wrapper">
-    <!-- <nav class="nav">
-      
-        <div class="nav-button">
-            <button class="btn white-btn" id="loginBtn" onclick="login()">Login</button>
-            <button class="btn" id="registerBtn" onclick="register()">Register</button>
-        </div>
-        <div class="nav-menu-btn">
-            <i class="bx bx-menu" onclick="myMenuFunction()"></i>
-        </div>
-    </nav> -->
    
     <div class="form-box">
         <div class="login-container" id="login">
@@ -27,63 +15,11 @@
                 <input type="text" name="username" class="input-field" placeholder="Username">
                 
                 <input type="password" name="password" class="input-field" placeholder="Password">
-                <button type="submit" class="submit">Login</button>
+                <button type="submit" class="submit">Register</button>
             </div>
-        </form>
-            <!-- <div class="two-col">
-                <div class="one">
-                    <input type="checkbox" id="login-check">
-                    <label for="login-check"> Remember Me</label>
-                </div>
-                <div class="two">
-                    <label><a href="#">Forgot password?</a></label>
-                </div>
-            </div>
-        </div>
-
-        <div class="register-container" id="register">
-            <div class="top">
-                <span>Have an account? <a href="#" onclick="login()">Login</a></span>
-                <header>Register</header>
-            </div>
-            <div class="two-forms">
-                <div class="input-box">
-                    <input type="text" class="input-field" placeholder="Firstname">
-                    <i class="bx bx-user"></i>
-                </div>
-                <div class="input-box">
-                    <input type="text" class="input-field" placeholder="Lastname">
-                    <i class="bx bx-user"></i>
-                </div>
-            </div>
-            <div class="input-box">
-                <input type="text" class="input-field" placeholder="Email">
-                <i class="bx bx-envelope"></i>
-            </div>
-            <div class="input-box">
-                <input type="password" class="input-field" placeholder="Password">
-                <i class="bx bx-lock-alt"></i>
-            </div>
-            <div class="input-box">
-                <input type="submit" class="submit" value="Sign Up">
-            </div>
-            <div class="two-col">
-                <div class="one">
-                    <input type="checkbox" id="register-check">
-                    <label for="register-check"> Remember Me</label>
-                </div>
-                <div class="two">
-                    <label><a href="#">Terms & conditions</a></label>
-                </div> -->
-            </div>
+            </form>
         </div>
     </div>
 </div>   
-
-
-
-
-
-{% block js %}<script src="{% static 'app.js' %}"></script> {% endblock js %}
 
 {% endblock content %}

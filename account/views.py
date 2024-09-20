@@ -1,16 +1,28 @@
 from django.shortcuts import redirect, render
 from django.views.generic import View
 from django.urls import reverse
-from .forms import LoginForm
+from .forms import LoginForm, RegistrationForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
+
+
+def sign_up(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request,user)
+            return redirect('home-page')
+    else:
+        form = RegistrationForm()
+    return render(request, 'authtenticate/sign-up.html', {'form':form})
 
 
 
 class LogoutView(View):
     def get(self, request):
         logout(request)
-        messages.success(request, "You have been logged out successfully.")
+        messages.success(request, "Siz akkauntdan chiqdingiz")
         return redirect(reverse('login-page'))
     
 class LoginView(View):
@@ -33,8 +45,8 @@ class LoginView(View):
                 login(request, user)
                 return redirect('home-page')
             else:
-                messages.error(request, "Invalid username or password.")
+                messages.error(request, "username yoki parolingiz notog'ri !")
         else:
-            messages.error(request, "Form is not valid.")
+            messages.error(request, "Forma notog'ri to'ldirilgan")
         
         return render(request, self.template_name, context={'form': form})
