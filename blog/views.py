@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Blog,BlogCategory,BlogComment,BlogTag
 from django.db.models import Count
@@ -6,18 +5,11 @@ from .forms import CommentForm, ReplyForm
 from django.views.generic import ListView
 from django.db.models import Count
 from django.views.generic import DetailView
-=======
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView
-from django.db.models import Count
-from .models import Blog, BlogCategory, BlogComment, BlogTag
->>>>>>> e5d73b4daed339bb46d08ce6eb21aea8ca1248e4
 
 class BlogListView(ListView):
     model = Blog
     context_object_name = "blogs"
     template_name = "blog.html"
-<<<<<<< HEAD
     paginate_by = 3
 
     def get_queryset(self):
@@ -136,27 +128,3 @@ class BlogDetailView(DetailView):
             context['comment_form'] = form
             context['reply_form'] = reply_form
             return self.render_to_response(context)
-=======
-    paginate_by = 2
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['tags'] = BlogTag.objects.all()  
-        context['categories'] = BlogCategory.objects.all().annotate(blog_count=Count('blogs'))[:5]
-        context['Blog'] = Blog.objects.all().order_by("-created_date")[:3]    
-        return context
-
-
-class BlogDetailView(DetailView):
-    model = Blog
-    template_name = 'blog-details.html'
-    context_object_name = 'blog'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        blog = self.get_object()  
-        context['comments'] = BlogComment.objects.filter(blog=blog) 
-        context['tags'] = BlogTag.objects.filter(blog=blog)  
-        context['categories'] = BlogCategory.objects.all()
-        return context
->>>>>>> e5d73b4daed339bb46d08ce6eb21aea8ca1248e4
