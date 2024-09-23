@@ -195,6 +195,7 @@
                            </div>
                         </div>
                      </div>
+                     
                      <div class="sidebar__widget mb-45">
                         <h3 class="sidebar__widget-title">Category</h3>
                         <ul>
@@ -207,39 +208,87 @@
                         {% for category in categories  %}
                         <div class="sidebar__widget-content">
                            <ul>
-                              <li><a href="{% url 'blog-page' category.id %}">{{category.name}}<span>{{ category.blog_set.count }}</span></a></li>
+                              <li><a href="blog.html">Business <span>10</span></a></li>
+                              <li><a href="blog.html">Cleaning <span>08</span></a></li>
+                              <li><a href="blog.html">Consultant <span>24</span></a></li>
+                              <li><a href="blog.html">Creative <span>37</span></a></li>
+                              <li><a href="blog.html">Technology <span>103</span></a></li>
                            </ul>
+                           {% endfor %}
                         </div>
-                        {% endfor %}
                      </div>
+                     <div class="sidebar__widget mb-45">
+                        <h3 class="sidebar__widget-title">Recent Post</h3>
                         <div class="sidebar__widget-content">
-                           <div class="sidebar__widget mb-45">
-                              <h3 class="sidebar__widget-title">Recent Post</h3>
-                              <div class="sidebar__widget-content">
-                                  <div class="sidebar__post">
-                                      {% for post in recent_posts %}
-                                      <div class="rc__post d-flex align-items-center">
-                                          <div class="rc__post-thumb">
-                                              <a href="{% url 'blog_detail' post.pk %}"><img src="{{ post.image.url }}" alt="img"></a>
-                                          </div>
-                                          <div class="rc__post-content">
-                                              <h4 class="rc__post-title">
-                                                  <a href="{% url 'blog_detail' post.pk %}">{{ post.title }}</a>
-                                              </h4>
-                                              <div class="rc__meta">
-                                                  <span>
-                                                      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                          <path d="M7.5 14C11.0899 14 14 11.0899 14 7.5C14 3.91015 11.0899 1 7.5 1C3.91015 1 1 3.91015 1 7.5C1 11.0899 3.91015 14 7.5 14Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                                          <path d="M7.5 3.59961V7.49961L10.1 8.79961" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                                      </svg>{{ post.created_date|date:"F d, Y" }}
-                                                  </span>
-                                              </div>
-                                          </div>
-                                      </div>
-                                      {% empty %}
-                                          <p>No recent posts available.</p>
-                                      {% endfor %}
-                                  </div>
+                           <div class="sidebar__post">
+                              <div class="rc__post d-flex align-items-center">
+                                 <div class="rc__post-thumb">
+                                    <a href="blog-details.html"><img src="{% static 'imgs/blog/blog-11.jpg' %}" alt=""></a>
+                                 </div>
+                                 <div class="rc__post-content">
+                                    <h4 class="rc__post-title">
+                                       <a href="blog-details.html">Business meeting 2021 in San Francisco</a>
+                                    </h4>
+                                    <div class="rc__meta">
+                                       <span>
+                                          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                             <path
+                                                d="M7.5 14C11.0899 14 14 11.0899 14 7.5C14 3.91015 11.0899 1 7.5 1C3.91015 1 1 3.91015 1 7.5C1 11.0899 3.91015 14 7.5 14Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                             <path d="M7.5 3.59961V7.49961L10.1 8.79961" stroke="currentColor"
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                          </svg>July 21, 2022
+                                       </span>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="rc__post d-flex align-items-center">
+                                 <div class="rc__post-thumb">
+                                    <a href="blog-details.html"><img src="{% static 'imgs/blog/blog-12.jpg' %}" alt=""></a>
+                                 </div>
+                                 <div class="rc__post-content">
+                                    <h4 class="rc__post-title">
+                                       <a href="blog-details.html">Developing privacy user-centric apps</a>
+                                    </h4>
+                                    <div class="rc__meta">
+                                       <span>
+                                          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                             <path
+                                                d="M7.5 14C11.0899 14 14 11.0899 14 7.5C14 3.91015 11.0899 1 7.5 1C3.91015 1 1 3.91015 1 7.5C1 11.0899 3.91015 14 7.5 14Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                             <path d="M7.5 3.59961V7.49961L10.1 8.79961" stroke="currentColor"
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                          </svg>July 21, 2022
+                                       </span>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="rc__post d-flex align-items-center">
+                                 <div class="rc__post-thumb">
+                                    <a href="blog-details.html"><img src="{% static 'imgs/blog/blog-13.jpg' %}" alt=""></a>
+                                 </div>
+                                 <div class="rc__post-content">
+                                    <h4 class="rc__post-title">
+                                       <a href="blog-details.html">Starting and Growing Web Design in 2022</a>
+                                    </h4>
+                                    <div class="rc__meta">
+                                       <span>
+                                          <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                             xmlns="http://www.w3.org/2000/svg">
+                                             <path
+                                                d="M7.5 14C11.0899 14 14 11.0899 14 7.5C14 3.91015 11.0899 1 7.5 1C3.91015 1 1 3.91015 1 7.5C1 11.0899 3.91015 14 7.5 14Z"
+                                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                             <path d="M7.5 3.59961V7.49961L10.1 8.79961" stroke="currentColor"
+                                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                          </svg>July 21, 2022
+                                       </span>
+                                    </div>
+                                 </div>
                               </div>
                           </div>
                           

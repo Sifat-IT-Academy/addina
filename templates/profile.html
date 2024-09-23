@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Profile{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/users.css' %}">
+{% endblock css %}
+
+{% block content %}  
+    <div class="profile-container">
+        <div class="profile-sidebar">
+            <div class="profile-pic">
+                <img id="profileImage" src="" alt="">
+            </div>
+            <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+            <button id="uploadBtn">Rasmni tanlash</button>
+            <h2 id="profileName"></h2>
+            <ul>
+                <li class="active">Ma'lumotlarim</li>
+            </ul>
+        </div>
+        <div class="profile-content">
+            <h3>Ma'lumotlarim</h3>
+            <form id="profileForm">
+                <div class="form-group">
+                    <label for="familya">Familiya*</label>
+                    <input type="text" id="familya" value="" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="ism">Ism*</label>
+                    <input type="text" id="ism" value="" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="tugilganSana">Tug'ilgan sana</label>
+                    <input type="text" id="tugilganSana" placeholder="kk/oo/yyyy" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="email">Elektron pochta*</label>
+                    <input type="email" id="email" value="" disabled>
+                </div>
+                <div class="form-group">
+                    <label for="telefon">Telefon raqami*</label>
+                    <input type="text" id="telefon" value="+9989" disabled>
+                </div>
+                <button type="button" id="editBtn">Edit</button>
+                <button type="submit" id="saveBtn" style="display: none; background-color:green;">Save</button>
+            </form>
+        </div>
+    </div>
+    {% block js %} <script src="{% static 'js/script.js' %}"></script> {% endblock js %}
+    {% endblock content %}  
