@@ -56,3 +56,5 @@ class LoginView(View):
             messages.error(request, "Forma notog'ri to'ldirilgan")
         
         return render(request, self.template_name, context={'form': form})
+def profile_view(request):
+    return render(request, "profile.html")
