@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.shortcuts import *
 from .models import *
 from django.core.paginator import Paginator
@@ -31,3 +32,17 @@ def portfolio_detail(request, portfolio_id):
 
 
 
+=======
+from django.shortcuts import render
+from .models  import Portfolio
+from django.views.generic import ListView
+# def portfolio_view(request):
+#     return render(request, "portfolio.html")
+class PortfolioListView(ListView):
+    model = Portfolio
+    context_object_name = "portfolio"
+    template_name = "portfolio.html"
+    
+def portfolio_details_view(request):
+    return render(request, "portfolio-details.html")
+>>>>>>> e5d73b4daed339bb46d08ce6eb21aea8ca1248e4
