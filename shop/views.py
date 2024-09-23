@@ -8,12 +8,6 @@ from .forms import ProductCommentForm
 def index_view(request):
     return render(request, "index.html")
 
-def product_view(request):
-    return render(request, "product.html")
-
-# def product_details_view(request):
-#     return render(request, "product-details.html")
-
 def about_view(request):
     return render(request, 'about.html')
 
@@ -22,6 +16,9 @@ class ProductListView(ListView):
     template_name = 'product.html'
     context_object_name = 'products'
     paginate_by = 3
+
+
+
 
 def product_details_view(request, product_id):
     product = get_object_or_404(Product, id=product_id)
