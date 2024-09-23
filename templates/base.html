@@ -339,8 +339,11 @@
                        
 
                         <ul>
+                           {% if request.user.is_authenticated %}
                            <li>
+                              
                               <a class="furniture-clr-hover" href="{% url 'profile-page' request.user.id %}">My Profile</a>
+                              
                            </li>
                            <li>
                               <a class="furniture-clr-hover" href="wishlist.html">Wishlist</a>
@@ -351,6 +354,7 @@
                            <li>
                               <a href="{% url 'logout-page' %}">Logout</a>
                            </li>
+                           {% endif  %}
                         </ul>
                      </div>
                   </div>

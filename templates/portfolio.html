@@ -53,10 +53,8 @@
                </div> -->
                {% for portfolio in portfolio %}
                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
-                  {% for portfolio in portfolio %}
                   <div class="project-item">
                      <div class="project-thumb w-img">
-<<<<<<< HEAD
                         <img src="{{ portfolio.image.url }}" alt="">
                      </div>
                      <div class="project-content-inner">
@@ -71,22 +69,6 @@
                </div>
                {% endfor %}
 
-=======
-                        <img src="{{portfolio.image.url}}" alt="">
-                     </div>
-                     <div class="project-content-inner">
-                        <div class="project-content">
-                           <span>{{portfolio.title}}</span>
-                           <h4><a href="{% url 'portfolio-details-page'%}">{{portfolio.description| safe | truncatewords:13 }} </a></h4>
-                        </div>
-                        <a class="round-link-40" href="{% url 'portfolio-details-page'%}"><i
-                              class="fa-regular fa-angle-right"></i></a>
-                     </div>
-                  </div>
-                  {% endfor %}
-               </div>
-            </div>
->>>>>>> e5d73b4daed339bb46d08ce6eb21aea8ca1248e4
             <div class="row">
                <div class="col-xxl-12">
                   <div class="pagination__wrapper mt-50">
