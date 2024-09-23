@@ -30,18 +30,18 @@ document.getElementById('profileForm').addEventListener('submit', function(event
     document.getElementById('editBtn').style.display = 'inline-block';
 
 });
-document.getElementById('uploadBtn').addEventListener('click', function() {
-    document.getElementById('imageUpload').click();
-});
+// document.getElementById('uploadBtn').addEventListener('click', function() {
+//     document.getElementById('imageUpload').click();
+// });
 
-document.getElementById('imageUpload').addEventListener('change', function(event) {
-    const file = event.target.files[0];
+// document.getElementById('imageUpload').addEventListener('change', function(event) {
+//     const file = event.target.files[0];
     
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            document.getElementById('profileImage').src = e.target.result;
-        };
-        reader.readAsDataURL(file); 
-    }
-});
+//     if (file) {
+//         const reader = new FileReader();
+//         reader.onload = function(e) {
+//             document.getElementById('profileImage').src = e.target.result;
+//         };
+//         reader.readAsDataURL(file); 
+//     }
+// });

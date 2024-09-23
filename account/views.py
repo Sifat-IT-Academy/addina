@@ -1,9 +1,12 @@
 from django.shortcuts import redirect, render
 from django.views.generic import View
+from django.views.generic.edit import UpdateView
 from django.urls import reverse
 from .forms import LoginForm, RegistrationForm
 from django.contrib.auth import authenticate,login,logout
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
+from .models import User
 
 
 class RegistrationView(View):
@@ -56,5 +59,14 @@ class LoginView(View):
             messages.error(request, "Forma notog'ri to'ldirilgan")
         
         return render(request, self.template_name, context={'form': form})
-def profile_view(request):
-    return render(request, "profile.html")
+    
+
+
+
+class ProfileEditView(LoginRequiredMixin,UpdateView):
+    model = User
+    template_name = "profile.html"
+    fields = ['image','first_name','last_name','birth_date','email','phone_number']
+    success_url = 'profile-page'
+    def get_success_url(self):
+        return reverse('profile-page', kwargs={'pk': self.object.id})

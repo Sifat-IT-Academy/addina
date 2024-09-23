@@ -340,7 +340,7 @@
 
                         <ul>
                            <li>
-                              <a class="furniture-clr-hover" href="{% url 'profile-page' %}">My Profile</a>
+                              <a class="furniture-clr-hover" href="{% url 'profile-page' request.user.id %}">My Profile</a>
                            </li>
                            <li>
                               <a class="furniture-clr-hover" href="wishlist.html">Wishlist</a>
