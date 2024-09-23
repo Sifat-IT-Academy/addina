@@ -2,6 +2,7 @@
 {% load static %}
 {% block title %} Blog {% endblock title %}
 {% block search %} 
+
 <form action="{% url 'blog-page' %}" method="GET">
     <input type="text" placeholder="Search..." name="q" value="{{ request.GET.q }}">
     <button type="submit">
