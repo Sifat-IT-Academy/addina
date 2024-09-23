@@ -32,11 +32,7 @@ class BlogListView(ListView):
         context['categories'] = BlogCategory.objects.annotate(blog_count=Count('blog'))
         context['tags'] = BlogTag.objects.annotate(blog_count=Count('blogs'))
         context['all_blogs_count'] = Blog.objects.count()
-
-        # Add comments
         context['comments'] = BlogComment.objects.select_related('blog').all()
-
-        # Add the latest 3 blogs
         context['recent_blogs'] = Blog.objects.order_by('-created_date').all()[:3]
 
         if 'category_id' in self.kwargs:
@@ -45,46 +41,6 @@ class BlogListView(ListView):
             context['current_tag'] = BlogTag.objects.get(id=self.kwargs['tag_id'])
 
         return context
-
-
-
-
-
-
-
-# def blog_detail(request, id):
-#     blog = get_object_or_404(Blog, id=id)
-#     comments = blog.comments.all()  # 'BlogComment' o'rniga 'comments' ishlatildi
-
-#     if request.method == 'POST':
-#         comment_form = CommentForm(request.POST)
-#         if comment_form.is_valid():
-#             comment = comment_form.save(commit=False)
-#             comment.blog = blog
-#             comment.user = request.user  # Foydalanuvchi login qilgan bo'lishi kerak
-#             comment.save()
-#             return redirect('blog_detail', id=blog.id)
-#     else:
-#         comment_form = CommentForm()
-
-#     context = {
-#         'blog': blog,
-#         'comments': comments,
-#         'comment_form': comment_form
-#     }
-#     return render(request, 'blog-details.html', context)
-
-# def sidebar_recent_posts(request):
-#     recent_posts = Blog.objects.order_by('-created_at')[:3]
-#     context = {
-#         'recent_posts': recent_posts
-#     }
-#     return context 
-
-from django.shortcuts import get_object_or_404
-from django.views.generic import DetailView
-from .models import Blog
-from .forms import CommentForm
 
 class BlogDetailView(DetailView):
     model = Blog
