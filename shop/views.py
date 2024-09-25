@@ -24,13 +24,14 @@ def product_details_view(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     comments = product.productcomment_set.all()
     comment_count = comments.count()   
+    
 
     if request.method == 'POST':
         form = ProductCommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
             comment.product = product
-            comment.user = request.user
+            # comment.user = request.user
             comment.save()
             return redirect('product-details-page', product_id=product.id)
     else:

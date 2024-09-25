@@ -82,10 +82,11 @@
                         <div class="product__details-tag mr-10">
                            <a href="{% url 'product-details-page' product.id %}">{{ product.category }}</a>
                         </div>
+                        
                         <div class="product__details-rating mr-10">
-                           <a href="#"><i class="fa-solid fa-star"></i></a>
-                           <a href="#"><i class="fa-solid fa-star"></i></a>
-                           <a href="#"><i class="fa-regular fa-star"></i></a>
+                           {% for i in ratings_range %}
+                           <a href="#"><i class="{% if i <= product.rating %}fas{% else %}fal{% endif %} fa-star"></i></a>
+                           {% endfor %}
                         </div>
                         <div class="product__details-review-count">
                            <a href="#">{{ comment_count }} Reviews</a>

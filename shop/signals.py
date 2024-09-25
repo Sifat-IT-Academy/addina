@@ -10,7 +10,7 @@ def update_product_rating(sender, instance, **kwargs):
     
     comments = product.productcomment_set.all()
     if comments.exists():
-        average_rating = sum(comment.rating for comment in comments) / comments.count()
+        average_rating = sum(comment.rating for comment in comments) // comments.count()
     else:
         average_rating = 0
     product.rating = round(average_rating)
