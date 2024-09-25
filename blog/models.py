@@ -11,7 +11,7 @@ class BlogTag(models.Model):
         return self.name
 
 class BlogCategory(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(_("surname"),max_length=255)
 
     def __str__(self) -> str:
         return f"{self.name}"
