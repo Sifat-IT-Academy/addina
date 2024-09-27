@@ -8,49 +8,49 @@
 {% block content %}  
 <form id="profileForm" method="post" action="{% url 'profile-page' request.user.id %}" enctype="multipart/form-data">
     {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">save</button>
-    <!-- <div class="profile-container">
+    
+  
+    <div class="profile-container">
         <div class="profile-sidebar">
-            <div class="profile-pic">
-                <img id="profileImage" src="" alt="">
-            </div>
-            <input name="image" type="file" id="imageUpload" accept="image/*"  style="display: none;">
-            <img id="imagePreview" src="" alt="Image Preview">
-            <button id="uploadBtn">Rasmni tanlash</button>
-            <h2 id="profileName"></h2>
+            <img src="" alt="Profil rasmi" id="profileImg" style="border-radius:50%;">
+            <h4 id="profileName">Name:</h4>
             <ul>
                 <li class="active">Ma'lumotlarim</li>
             </ul>
         </div>
         <div class="profile-content">
             <h3>Ma'lumotlarim</h3>
-            
+            <form id="profileForm">
+                <div class="form-group">
+                    <label for="profileImage">Rasm yuklash</label>
+                    <input type="file" id="profileImage" accept="image/*">
+                </div>
                 <div class="form-group">
                     <label for="familya">Familiya*</label>
-                    <input type="text" name="last_name" id="familya" value="{{request.user.last_name}}"  disabled>
+                    <input type="text" id="familya" value="{{request.user.last_name}}"disabled required>
                 </div>
                 <div class="form-group">
                     <label for="ism">Ism*</label>
-                    <input type="text" name="first_name" id="ism" value="{{request.user.first_name}}" disabled>
+                    <input type="text" id="ism"  value="{{request.user.first_name}}" disabled required>
                 </div>
                 <div class="form-group">
                     <label for="tugilganSana">Tug'ilgan sana</label>
-                    <input type="text" name="birth_date" id="tugilganSana" placeholder="kk/oo/yyyy" value="{{request.user.birth_date}}" disabled>
+                    <input type="text" id="tugilganSana" placeholder="kk/oo/yyyy" value="{{request.user.birth_date}}" disabled required>
                 </div>
                 <div class="form-group">
                     <label for="email">Elektron pochta*</label>
-                    <input type="email" name="email" id="email" value="{{request.user.email}}" disabled>
+                    <input type="email" id="email" value="{{request.user.email}}"  disabled required>
                 </div>
                 <div class="form-group">
                     <label for="telefon">Telefon raqami*</label>
-                    <input type="text" name="phone_number" id="telefon" value="{{request.user.phone_number}}" disabled>
+                    <input type="text" id="telefon" value="{{request.user.phone_number}}"disabled required>
                 </div>
                 <button type="button" id="editBtn">Edit</button>
                 <button type="submit" id="saveBtn" style="display: none; background-color:green;">Save</button>
-            
+            </form>
         </div>
-    </div> -->
+    </div>
+
     </form>
     {% block js %} <script src="{% static 'js/script.js' %}"></script> {% endblock js %}
     {% endblock content %}  
