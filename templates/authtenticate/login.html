@@ -1,25 +1,28 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block title %} Login {% endblock title %}
-{% block content %}     
- <div class="wrapper">
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock css %}
+
+{% block content %}
    
+<div class="wrapper">
     <div class="form-box">
         <div class="login-container" id="login">
             <div class="top">
-                <span>Don't have an account? <a href="#" onclick="register()">Register</a></span>
+                <span>Don't have an account? <a href="{% url 'register-page' %}">Register</a></span>
                 <header>Login</header>
             </div>
             <form action="{% url 'login-page' %}" method="post">
                 {% csrf_token %}
-                <input type="text" name="username" class="input-field" placeholder="Username">
-                
-                <input type="password" name="password" class="input-field" placeholder="Password">
-                <button type="submit" class="submit">Register</button>
-            </div>
+                <input type="text" name="username" class="input-field" placeholder="Username"><br>
+                <input type="password" name="password" class="input-field" placeholder="Password"><br>
+                <button type="submit" class="submit">Login</button>
             </form>
         </div>
     </div>
-</div>   
-
+</div>
+{% block js %} <script src="{% static 'app.js' %}"></script>  {% endblock js %}
 {% endblock content %}

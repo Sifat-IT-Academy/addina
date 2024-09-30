@@ -1,7 +1,14 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} Sign up {% endblock title %}
-{% block content %}     
+{% block title %} Register {% endblock title %}
+{% block content %}    
+
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock css %}
+
+
  <div class="wrapper">
    
          
@@ -11,5 +18,8 @@
                 <button type="submit">Sign up</button>
             </form>
 </div>   
+
+
+{% block js %} <script src="{% static 'app.js' %}"></script>  {% endblock js %}
 
 {% endblock content %}
