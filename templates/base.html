@@ -310,8 +310,9 @@
                             <input type="submit" value="GO">
                         </form>
                     </div>
-                    
+                    {% if not request.user.is_authenticated %}
                      <div class="header-lang-item tp-header-currency">
+
                         <span class="header-currency-toggle text-white" id="header-currency-toggle">Login</span>
                         <ul>
                            <li>
@@ -322,15 +323,18 @@
                            </li>
                         </ul>
                      </div>
-                     <div class="header-lang-item tp-header-setting">
-                        
-                        <span class="header-setting-toggle text-white" id="header-setting-toggle">
+                     {% endif %}
+
+                     
                            {% if request.user.is_authenticated %}
+                           <div class="header-lang-item tp-header-setting">
+                        
+                              <span class="header-setting-toggle text-white" id="header-setting-toggle">
+                             
                            {{ request.user.username }}
-                           {% else %}
-                           Sign up
-                           {% endif %}
                         </span>
+                           {% endif %}
+                        
                        
 
                         <ul>
@@ -340,13 +344,6 @@
                               <a class="furniture-clr-hover" href="{% url 'profile-page' request.user.id %}">My Profile</a>
                               
                            </li>
-                           <li>
-                              <a class="furniture-clr-hover" href="wishlist.html">Wishlist</a>
-                           </li>
-                           <li>
-                              <a class="furniture-clr-hover" href="cart.html">Cart</a>
-                           </li>
-                           <li>
                               <a href="{% url 'logout-page' %}">Logout</a>
                            </li>
                            {% endif  %}
