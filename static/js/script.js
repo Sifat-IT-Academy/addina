@@ -11,8 +11,11 @@ document.getElementById('editBtn').addEventListener('click', function() {
 });
 
 document.getElementById('profileForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
+    document.getElementById('familya').disabled = false;
+    document.getElementById('ism').disabled = false;
+    document.getElementById('tugilganSana').disabled = false;
+    document.getElementById('email').disabled = false;
+    document.getElementById('telefon').disabled = false;
     // Familiya va ismni olamiz
     const familya = document.getElementById('familya').value;
     const ism = document.getElementById('ism').value;

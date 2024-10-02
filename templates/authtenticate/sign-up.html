@@ -1,21 +1,49 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} Register {% endblock title %}
-{% block content %}    
-
-
+{% block title %} Sign up {% endblock title %}
+{% block content %}     
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/register.css' %}">
 {% endblock css %}
 
-
  <div class="wrapper">
-   
-         
-            <form method="post">
+   <form method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit">Sign up</button>
+                <div class="register-container" id="register">
+                    <div class="top">
+                       <h3>Sign Up</h3>
+                    </div>
+                    <div class="two-forms">
+                        <div class="input-box">
+                            <input type="file" class="input-field" placeholder="Password" required>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" class="input-field" placeholder="Firstname" style="font-size:24px;" required>
+                        </div>
+                        
+                        <div class="input-box">
+                            <input type="text" class="input-field" placeholder="Lastname" style="font-size:24px;" required>
+                        </div>
+                    </div> 
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Email"style="font-size:24px;" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="date" class="input-field" placeholder="Birthday" style="font-size:18px;" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="phone" class="input-field" placeholder="Phone number   " style="font-size:24px;" required>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" class="input-field" placeholder="Password"  style="font-size:24px;"required>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" class="input-field" placeholder="Password again" style="font-size:24px;" required>
+                    </div>
+                   
+                    <button class="submit" style="font-size:20px;">Sign up</button>
+                </div>
+               
             </form>
 </div>   
 

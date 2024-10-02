@@ -1,0 +1,114 @@
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f3f4f6; 
+}
+
+
+.register-container {
+    background-color: white;
+    padding: 60px; 
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    width: 800px; 
+    max-width: 100%; 
+}
+
+/* Form top text */
+.register-container .top {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.register-container .top header {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #3a3a3a;
+}
+
+.register-container .top span {
+    font-size: 0.9rem;
+    color: #7a7a7a;
+}
+
+.register-container .top span a {
+    color: #b5854f; /* Boshqa rangli linklar */
+    text-decoration: none;
+}
+
+.register-container .top span a:hover {
+    text-decoration: underline;
+}
+
+/* Input box styles */
+.input-box {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.input-box .input-field {
+    width: 100%;
+    padding: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+    font-size: 20px;
+}
+
+.input-box .input-field:focus {
+    border-color: #b5854f;
+    box-shadow: 0 0 5px rgba(181, 133, 79, 0.3); /* Fokusda qirrani ko'rsatish */
+}
+
+.input-box i {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #b5854f;
+    font-size: 1.2rem;
+}
+
+/* Submit button */
+.submit {
+    background-color: #b5854f;
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+}
+
+.submit:hover {
+    background-color: #a2703e;
+}
+
+/* Two column styles */
+.two-col {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.two-col label a {
+    color: #b5854f;
+    text-decoration: none;
+}
+
+.two-col label a:hover {
+    text-decoration: underline;
+}
+
+/* Checkbox styles */
+#register-check {
+    margin-right: 0.5rem;
+}

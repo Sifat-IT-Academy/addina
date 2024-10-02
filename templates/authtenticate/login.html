@@ -1,28 +1,36 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock css %}
 {% block title %} Login {% endblock title %}
 
-{% block css %}
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
-{% endblock css %}
-
-{% block content %}
-   
+{% block content %}     
 <div class="wrapper">
-    <div class="form-box">
-        <div class="login-container" id="login">
-            <div class="top">
-                <span>Don't have an account? <a href="{% url 'register-page' %}">Register</a></span>
-                <header>Login</header>
-            </div>
-            <form action="{% url 'login-page' %}" method="post">
-                {% csrf_token %}
-                <input type="text" name="username" class="input-field" placeholder="Username"><br>
-                <input type="password" name="password" class="input-field" placeholder="Password"><br>
-                <button type="submit" class="submit">Login</button>
-            </form>
+    <div class="login-container">
+        <div class="top">
+            <span>Don't have an account? 
+                <a href="{% url 'register-page'%}" onclick="register()">Register</a>
+            </span>
+            <header>Login</header>
+
         </div>
+        <form action="{% url 'login-page' %}" method="post">
+            {% csrf_token %}
+            <div class="input-box">
+                <i class="icon-user"></i>
+                <input type="text" name="username" class="input-field" placeholder="Username" required>
+            </div>
+            <div class="input-box">
+                <i class="icon-lock"></i>
+                <input type="password" name="password1" class="input-field" placeholder="Password" required>
+            </div>
+            <button type="submit" class="submit">Login</button>
+        </form>
     </div>
 </div>
+<<<<<<< HEAD
+=======
 {% block js %} <script src="{% static 'app.js' %}"></script>  {% endblock js %}
+>>>>>>> 5e56afa7f8f99e460f9b9d9a043f06b0e7f719a3
 {% endblock content %}
