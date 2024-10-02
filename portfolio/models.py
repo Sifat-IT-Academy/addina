@@ -2,6 +2,7 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from account.models import User
 from django.utils.translation import gettext_lazy as _
+from django.utils import timezone
 
 
 class PortfolioCategory(models.Model):
@@ -31,3 +32,4 @@ class Portfolio(models.Model):
     class Meta:
         verbose_name = _("Portfolio")
         verbose_name_plural = _("Portfolios")
+
