@@ -1,45 +1,45 @@
-
+/* Wrapper styling */
 .wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f3f4f6; 
+    background-color: #f3f4f6;
 }
 
-
-.register-container {
+/* Form container styling */
+.login-container {
     background-color: white;
-    padding: 60px; 
+    padding: 60px;
     border-radius: 15px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    width: 800px; 
-    max-width: 100%; 
+    width: 800px;
+    max-width: 100%;
 }
 
 /* Form top text */
-.register-container .top {
+.login-container .top {
     text-align: center;
     margin-bottom: 2rem;
 }
 
-.register-container .top header {
+.login-container .top header {
     font-size: 1.8rem;
     font-weight: bold;
     color: #3a3a3a;
 }
 
-.register-container .top span {
+.login-container .top span {
     font-size: 0.9rem;
     color: #7a7a7a;
 }
 
-.register-container .top span a {
-    color: #b5854f; /* Boshqa rangli linklar */
+.login-container .top span a {
+    color: #b5854f; /* Linklar rangi */
     text-decoration: none;
 }
 
-.register-container .top span a:hover {
+.login-container .top span a:hover {
     text-decoration: underline;
 }
 
@@ -61,7 +61,7 @@
 
 .input-box .input-field:focus {
     border-color: #b5854f;
-    box-shadow: 0 0 5px rgba(181, 133, 79, 0.3); /* Fokusda qirrani ko'rsatish */
+    box-shadow: 0 0 5px rgba(181, 133, 79, 0.3); /* Fokus effekti */
 }
 
 .input-box i {
@@ -109,6 +109,6 @@
 }
 
 /* Checkbox styles */
-#register-check {
+#login-check {
     margin-right: 0.5rem;
 }

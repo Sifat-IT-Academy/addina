@@ -7,34 +7,41 @@
 {% endblock css %}
 
  <div class="wrapper">
-   
-         
-            <form method="post">
+   <form method="post">
                 {% csrf_token %}
                 <div class="register-container" id="register">
                     <div class="top">
-                        <span>Have an account? <a href="#" onclick="login()">Login</a></span>
-                        <header>Sign Up</header>
+                       <h3>Sign Up</h3>
                     </div>
                     <div class="two-forms">
                         <div class="input-box">
-                            <input type="text" class="input-field" placeholder="Firstname" required>
-                            <i class="bx bx-user"></i>
+                            <input type="file" class="input-field" placeholder="Password" required>
                         </div>
                         <div class="input-box">
-                            <input type="text" class="input-field" placeholder="Lastname" required>
-                            <i class="bx bx-user"></i>
+                            <input type="text" class="input-field" placeholder="Firstname" style="font-size:24px;" required>
                         </div>
+                        
+                        <div class="input-box">
+                            <input type="text" class="input-field" placeholder="Lastname" style="font-size:24px;" required>
+                        </div>
+                    </div> 
+                    <div class="input-box">
+                        <input type="text" class="input-field" placeholder="Email"style="font-size:24px;" required>
                     </div>
                     <div class="input-box">
-                        <input type="text" class="input-field" placeholder="Email" required>
-                        <i class="bx bx-envelope"></i>
+                        <input type="date" class="input-field" placeholder="Birthday" style="font-size:18px;" required>
                     </div>
                     <div class="input-box">
-                        <input type="password" class="input-field" placeholder="Password" required>
-                        <i class="bx bx-lock-alt"></i>
+                        <input type="phone" class="input-field" placeholder="Phone number   " style="font-size:24px;" required>
                     </div>
-                    <button class="submit">Sign up</button>
+                    <div class="input-box">
+                        <input type="password" class="input-field" placeholder="Password"  style="font-size:24px;"required>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" class="input-field" placeholder="Password again" style="font-size:24px;" required>
+                    </div>
+                   
+                    <button class="submit" style="font-size:20px;">Sign up</button>
                 </div>
                
             </form>

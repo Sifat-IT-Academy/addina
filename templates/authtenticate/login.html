@@ -1,25 +1,30 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock css %}
 {% block title %} Login {% endblock title %}
 {% block content %}     
- <div class="wrapper">
-   
-    <div class="form-box">
-        <div class="login-container" id="login">
-            <div class="top">
-                <span>Don't have an account? <a href="#" onclick="register()">Register</a></span>
-                <header>Login</header>
-            </div>
-            <form action="{% url 'login-page' %}" method="post">
-                {% csrf_token %}
-                <input type="text" name="username" class="input-field" placeholder="Username">
-                
-                <input type="password" name="password" class="input-field" placeholder="Password">
-                <button type="submit" class="submit">Register</button>
-            </div>
-            </form>
+<div class="wrapper">
+    <div class="login-container">
+        <div class="top">
+            <span>Don't have an account? 
+                <a href="{% url 'register-page'%}" onclick="register()">Register</a>
+            </span>
+            <header>Login</header>
         </div>
+        <form action="{% url 'login-page' %}" method="post">
+            {% csrf_token %}
+            <div class="input-box">
+                <i class="icon-user"></i>
+                <input type="text" name="username" class="input-field" placeholder="Username" required>
+            </div>
+            <div class="input-box">
+                <i class="icon-lock"></i>
+                <input type="password" name="password1" class="input-field" placeholder="Password" required>
+            </div>
+            <button type="submit" class="submit">Login</button>
+        </form>
     </div>
-</div>   
-
+</div>
 {% endblock content %}
