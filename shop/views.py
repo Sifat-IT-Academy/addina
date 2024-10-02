@@ -11,6 +11,9 @@ def index_view(request):
 def about_view(request):
     return render(request, 'about.html')
 
+def wishlist_view(request):
+    return render(request, 'wishlist.html')
+
 class ProductListView(ListView):
     model = Product
     template_name = 'product.html'
