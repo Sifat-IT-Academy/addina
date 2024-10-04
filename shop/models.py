@@ -5,7 +5,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class ProductCategory(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=250)
     def __str__(self):
         return f"{self.name}"
 
@@ -52,7 +52,7 @@ class IntegerRangeField(models.IntegerField):
 class ProductComment(models.Model):
     id = models.BigAutoField(primary_key=True)
     # user = models.ForeignKey(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=250)
     email = models.EmailField()
     comment = models.CharField(max_length=150)
     create_date = models.DateTimeField(auto_now=True)  
