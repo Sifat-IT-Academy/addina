@@ -103,7 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'uz-uz'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
 
@@ -114,6 +114,8 @@ from django.utils.translation import gettext_lazy as _
 LANGUAGES = [
     ("uz", _("Uzbek")),
     ("en", _("English")),]
+
+LOCALE_PATHS = BASE_DIR , 'locale'
 
 # MODELTRANSLATION_DEFAULT_LANGUAGE = 'uz'
 
