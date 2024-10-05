@@ -3,7 +3,7 @@
 
 <!doctype html>
 <html class="no-js" lang="zxx">
-
+   
 <head>
    <meta charset="utf-8">
    <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -83,7 +83,7 @@
             <div class="offcanvas__content">
                <div class="offcanvas__top mb-40 d-flex justify-content-between align-items-center">
                   <div class="offcanvas__logo">
-                     <a href="index.html">
+                     <a href="#">
                         <img src="{% static 'imgs/furniture/logo/logo-light.svg' %}" alt="logo not found">
                      </a>
                   </div>
@@ -96,7 +96,7 @@
               
                <div class="mobile-menu fix mb-40"></div>
                <div class="offcanvas__contact mt-30 mb-20">
-                  <h4>{% blocktranslate %}Kontakt ma'lumotlari{% endblocktranslate %}</h4>
+                  <h4>Contact Info</h4>
                   <ul>
                      <li class="d-flex align-items-center">
                         <div class="offcanvas__contact-icon mr-15">
@@ -297,44 +297,29 @@
                      <div class="header-lang-item header-lang">
                         <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
                             <input name="next" type="hidden" value="{{ redirect_to }}">
-                            <select name="language" >
-                                {% get_current_language as LANGUAGE_CODE %}
+                            <select style="background-color: transparent; border: none; outline: none; color: #fff;" name="language" onchange="this.form.submit()">
                                 {% get_available_languages as LANGUAGES %}
                                 {% get_language_info_list for LANGUAGES as languages %}
                                 {% for language in languages %}
-                                    <option  value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
+                                    <option style="color: #000;" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
                                         {{ language.name_local }} ({{ language.code }})
                                     </option>
                                 {% endfor %}
                             </select>
-                            <input type="submit" value="GO">
                         </form>
                     </div>
-                    {% if not request.user.is_authenticated %}
-                     <div class="header-lang-item tp-header-currency">
-
-                        <span class="header-currency-toggle text-white" id="header-currency-toggle">{% blocktranslate %}Kirish{% endblocktranslate %}</span>
-                        <ul>
-                           <li>
-                              <a class="furniture-clr-hover" href="{% url 'login-page'%}">{% blocktranslate %}Kirish{% endblocktranslate %}</a>
-                           </li>
-                           <li>
-                              <a class="furniture-clr-hover" href="{% url 'register-page'%}">{% blocktranslate %}Ro'yhatdan o'tish{% endblocktranslate %}</a>
-                           </li>
-                        </ul>
-                     </div>
-                     {% endif %}
-
-                     
+                    
+                    
+                  
+                     <div class="header-lang-item tp-header-setting">
+                        
+                        <span class="header-setting-toggle text-white" id="header-setting-toggle">
                            {% if request.user.is_authenticated %}
-                           <div class="header-lang-item tp-header-setting">
-                        
-                              <span class="header-setting-toggle text-white" id="header-setting-toggle">
-                             
                            {{ request.user.username }}
-                        </span>
+                           {% else %}
+                           Sign up
                            {% endif %}
-                        
+                        </span>
                        
 
                         <ul>
@@ -344,6 +329,8 @@
                               <a class="furniture-clr-hover" href="{% url 'profile-page' request.user.id %}">My Profile</a>
                               
                            </li>
+                       
+                           <li>
                               <a href="{% url 'logout-page' %}">Logout</a>
                            </li>
                            {% endif  %}
@@ -359,7 +346,7 @@
                   <div class="header-main-4">
                      <div class="header-left">
                         <div class="header-logo">
-                           <a href="index.html">
+                           <a href="{% url 'home-page' %}">
                               <img src="{% static 'imgs/furniture/logo/logo.svg' %}" alt="logo not found">
                            </a>
                         </div>
@@ -368,17 +355,17 @@
                               <nav id="mobile-menu">
                                  <ul>
                                     <li class="has-dropdown">
-                                       <a href="{% url 'home-page' %}">{% blocktranslate %}Asosiy sahifa{% endblocktranslate %}</a>
+                                       <a href="{% url 'home-page' %}">Home</a>
                                     </li>
                                     <li>
-                                       <a href="{% url 'about-page' %}">{% blocktranslate %}Biz haqimizda{% endblocktranslate %}</a>
+                                       {% comment %} <a href="{% url 'about-page' %}">About</a> {% endcomment %}
                                     </li>
                                     <li class="has-dropdown">
-                                       <a href="{% url 'product-page' %}">{% blocktranslate %}Maxsulotlar{% endblocktranslate %}</a>
+                                       <a href="{% url 'product-page' %}">Product</a>
                                        
                                     </li>
                                     <li class="has-dropdown">
-                                       <a href="{% url 'cart-page' %}">{% blocktranslate %}Savatcha{% endblocktranslate %}</a>
+                                       <a href="{% url 'cart-page' %}">Cart</a>
                                     </li>
                                     <li class="has-dropdown">
                                        <a href="{% url 'portfolio-page' %}">Portfolio</a>
@@ -387,7 +374,7 @@
                                        <a href="{% url 'blog-page' %}">Blog</a>
                                     </li>
                                     <li>
-                                       <a href="{% url 'contact-page' %}">{% blocktranslate %}Biz bilan bog'lanish{% endblocktranslate %}</a>
+                                       <a href="{% url 'contact-page' %}">Contact</a>
                                     </li>
                                  </ul>
                               </nav>
@@ -467,7 +454,7 @@
             <div class="footer-grid-3">
                <div class="footer-widget-4">
                   <div class="footer-logo mb-35">
-                     <a href="index.html"><img src="{% static 'imgs/furniture/logo/logo-light.svg' %}"
+                     <a href="{% url 'home-page' %}"><img src="{% static 'imgs/furniture/logo/logo-light.svg' %}"
                            alt="image bnot found"></a>
                   </div>
                   <p>It helps designers plan out where the content will sit, the content to be written and approved.
@@ -499,7 +486,7 @@
                   </div>
                   <div class="footer-link">
                      <ul>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{% url 'home-page' %}">Home</a></li>
                         <li><a href="about.html">About us </a></li>
                         <li><a href="about.html">Pages</a></li>
                         <li><a href="blog.html">Blog</a></li>
@@ -591,5 +578,5 @@
 </body>
 
 
-<!-- Mirrored from gramentheme.com/html/addina/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Aug 2024 05:35:06 GMT -->
+<!-- Mirrored from gramentheme.com/html/addina/{% url 'home-page' %} by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Aug 2024 05:35:06 GMT -->
 </html>
