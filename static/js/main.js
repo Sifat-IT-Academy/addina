@@ -88,23 +88,79 @@
 	});
 
 	/*======================================
-	 Cart Quantity Js
+	Cart Quantity Js
 	========================================*/
 	$(".cart-minus").click(function () {
-		var $input = $(this).parent().find("input");
-		var count = parseInt($input.val()) - 1;
-		count = count < 1 ? 1 : count;
-		$input.val(count);
-		$input.change();
-		return false;
+	var $input = $(this).parent().find("input");
+	var count = parseInt($input.val()) - 1;
+	count = count < 1 ? 1 : count;
+	$input.val(count);
+	$input.change();
+
+	// Narxni yangilash
+	updateSubtotal($(this));
+	return false;
 	});
 
 	$(".cart-plus").click(function () {
-		var $input = $(this).parent().find("input");
-		$input.val(parseInt($input.val()) + 1);
-		$input.change();
-		return false;
+	var $input = $(this).parent().find("input");
+	$input.val(parseInt($input.val()) + 1);
+	$input.change();
+
+	// Narxni yangilash
+	updateSubtotal($(this));
+	return false;
 	});
+
+	// Subtotalni yangilaydigan funksiya
+	function updateSubtotal(element) {
+	var $row = element.closest('tr'); // Har bir mahsulot satrini tanlaydi
+	var price = parseFloat($row.find('.product-price .amount').data('price')); // Mahsulotning bir dona narxi
+	var quantity = parseInt($row.find('.cart-input').val()); // Miqdorini oladi
+	var subtotal = price * quantity; // Umumiy narxni hisoblaydi
+	$row.find('.product-subtotal .amount').text('$' + subtotal.toFixed(2)); // Subtotalni yangilaydi
+	}
+
+	// Mahsulotni cartdan o'chirish
+	$(".remove-item").click(function (e) {
+		e.preventDefault();  // Sahifani qayta yuklashni oldini olamiz
+		var cartId = $(this).data('id');  // Mahsulotning id sini olamiz
+
+		$.ajax({
+			url: '/cart/remove/' + cartId + '/',  // O'chirish urliga ajax orqali so'rov yuboramiz
+			method: 'GET',
+			success: function (response) {
+				location.reload();  // O'chirish muvaffaqiyatli bo'lsa sahifani yangilaymiz
+			}
+		});
+	});
+
+
+	// Har bir mahsulotning narxi va miqdorini oladigan funksiya
+	function updateSubtotal(element) {
+		var $row = element.closest('tr'); // Har bir mahsulotning qatori
+		var price = parseFloat($row.find('.product-price .amount').data('price')); // Mahsulot narxi
+		var quantity = parseInt($row.find('.cart-input').val()); // Miqdor
+		var subtotal = price * quantity; // Mahsulot umumiy narxi
+		$row.find('.product-subtotal .amount').text('$' + subtotal.toFixed(2)); // Yangilanadi
+		updateTotal(); // Umumiy narxni yangilaydi
+	}
+
+	// Umumiy narxni hisoblaydigan funksiya
+	function updateTotal() {
+		var total = 0;
+		$('.product-subtotal .amount').each(function() {
+			total += parseFloat($(this).text().replace('$', ''));
+		});
+		// Umumiy narxni sahifaga qo'shish
+		$('.cart-page-total li:nth-child(2) span').text('$' + total.toFixed(2));
+	}
+
+	// Miqdorni o'zgartirganda narxni yangilash
+	$(".cart-minus, .cart-plus").click(function () {
+		updateSubtotal($(this));
+	});
+
 
 	/*======================================
 	MagnificPopup image view
