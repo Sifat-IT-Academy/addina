@@ -83,7 +83,7 @@
             <div class="offcanvas__content">
                <div class="offcanvas__top mb-40 d-flex justify-content-between align-items-center">
                   <div class="offcanvas__logo">
-                     <a href="index.html">
+                     <a href="{% url 'home-page' %}">
                         <img src="{% static 'imgs/furniture/logo/logo-light.svg' %}" alt="logo not found">
                      </a>
                   </div>
@@ -359,7 +359,7 @@
                   <div class="header-main-4">
                      <div class="header-left">
                         <div class="header-logo">
-                           <a href="index.html">
+                           <a href="{% url 'home-page' %}">
                               <img src="{% static 'imgs/furniture/logo/logo.svg' %}" alt="logo not found">
                            </a>
                         </div>
@@ -467,7 +467,7 @@
             <div class="footer-grid-3">
                <div class="footer-widget-4">
                   <div class="footer-logo mb-35">
-                     <a href="index.html"><img src="{% static 'imgs/furniture/logo/logo-light.svg' %}"
+                     <a href="{% url 'home-page' %}"><img src="{% static 'imgs/furniture/logo/logo-light.svg' %}"
                            alt="image bnot found"></a>
                   </div>
                   <p>It helps designers plan out where the content will sit, the content to be written and approved.
@@ -499,7 +499,7 @@
                   </div>
                   <div class="footer-link">
                      <ul>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="{% url 'home-page' %}">Home</a></li>
                         <li><a href="about.html">About us </a></li>
                         <li><a href="about.html">Pages</a></li>
                         <li><a href="blog.html">Blog</a></li>
