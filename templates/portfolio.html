@@ -33,75 +33,44 @@
       <section class="project-area theme-bg-4 section-space p-relative fix">
          <div class="container">
             <div class="row g-5">
-               <!-- <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
-                  {% for portfolio in portfolio %}
-                  <div class="project-item">
-                      <div class="project-thumb w-img">
-                          <img src="{{ portfolio.image.url }}" alt="">
-                      </div>
-                      <div class="project-content-inner">
-                          <div class="project-content">
-                              <span>{{ portfolio.category }}</span>
-                              <h4><a href="{% url 'portfolio-details-page' portfolio.id %}">{{ portfolio.title }}</a></h4>
-                          </div>
-                          <a class="round-link-40" href="{% url 'portfolio-details-page' portfolio.id %}">
-                              <i class="fa-regular fa-angle-right"></i>
-                          </a>
-                      </div>
-                  </div>
-              {% endfor %}
-               </div> -->
-               {% for portfolio in portfolio %}
                <div class="col-xxl-4 col-xl-4 col-lg-4 col-md-6">
                   <div class="project-item">
+                     {% for portfolio in portfolio %}
                      <div class="project-thumb w-img">
                         <img src="{{ portfolio.image.url }}" alt="">
                      </div>
                      <div class="project-content-inner">
                         <div class="project-content">
-                           <span>{{ portfolio.category }}</span>
-                           <h4><a href="{% url 'portfolio-details-page' portfolio.id %}">{{ portfolio.title }}</a></h4>
+                           <span>{{ portfolio.title }}</span>
+                           <h4><a href="{% url 'portfolio-details-page' %}">{{ portfolio.description | safe | truncatewords:10 }}</a></h4>
                         </div>
-                        <a class="round-link-40" href="{% url 'portfolio-details-page' portfolio.id %}"><i
+                        <a class="round-link-40" href="{% url 'portfolio-details-page' %}"><i
                               class="fa-regular fa-angle-right"></i></a>
                      </div>
                   </div>
                </div>
-               {% endfor %}
-
+            </div>
+            {% endfor %}
             <div class="row">
                <div class="col-xxl-12">
                   <div class="pagination__wrapper mt-50">
                      <div class="bd-basic__pagination d-flex align-items-center justify-content-center">
                         <nav>
                            <ul>
-                               {% if page_obj.has_previous %}
-                               <li>
-                                   <a href="?page=1">«</a>  <!-- Birinchi sahifaga o'tish -->
-                               </li>
-                               <li>
-                                   <a href="?page={{ page_obj.previous_page_number }}">‹</a>  <!-- Oldingi sahifaga o'tish -->
-                               </li>
-                               {% endif %}
-           
-                               {% for num in page_obj.paginator.page_range %}
-                               {% if num == page_obj.number %}
-                               <li><span class="current">{{ num }}</span></li>
-                               {% else %}
-                               <li><a href="?page={{ num }}">{{ num }}</a></li>
-                               {% endif %}
-                               {% endfor %}
-           
-                               {% if page_obj.has_next %}
-                               <li>
-                                   <a href="?page={{ page_obj.next_page_number }}">›</a>  <!-- Keyingi sahifaga o'tish -->
-                               </li>
-                               <li>
-                                   <a href="?page={{ page_obj.paginator.num_pages }}">»</a>  <!-- Yekun sahifaga o'tish -->
-                               </li>
-                               {% endif %}
+                              <li>
+                                 <a href="#">1</a>
+                              </li>
+                              <li>
+                                 <a href="#">2</a>
+                              </li>
+                              <li>
+                                 <span class="current">3</span>
+                              </li>
+                              <li>
+                                 <a href="#"><i class="fa-regular fa-angle-right"></i></a>
+                              </li>
                            </ul>
-                       </nav>
+                        </nav>
                      </div>
                   </div>
                </div>

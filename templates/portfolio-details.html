@@ -1,52 +1,66 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %} Portfolio-details {% endblock title %}
-{% block content %}     
+{% block title %} Portfolio Details {% endblock title %}
+{% block content %}
 
-   <!-- Body main wrapper start -->
-   <main>
+<!-- Body main wrapper start -->
+<main>
 
-      <!-- Breadcrumb area start  -->
-      <div class="breadcrumb__area theme-bg-1 p-relative z-index-11 pt-95 pb-95">
-         <div class="breadcrumb__thumb" data-background="{% static 'imgs/bg/breadcrumb-bg.jpg' %}"></div>
-         <div class="container">
-            <div class="row justify-content-center">
-               <div class="col-xxl-12">
-                  <div class="breadcrumb__wrapper text-center">
-                     <h2 class="breadcrumb__title">Portfolio Details</h2>
-                     <div class="breadcrumb__menu">
-                        <nav>
-                           <ul>
-                              <li><span><a href="index.html">Home</a></span></li>
-                              <li><span>Portfolio Details</span></li>
-                           </ul>
-                        </nav>
-                     </div>
+   <!-- Breadcrumb area start -->
+   <div class="breadcrumb__area theme-bg-1 p-relative z-index-11 pt-95 pb-95">
+      <div class="breadcrumb__thumb" data-background="{% static 'imgs/bg/breadcrumb-bg.jpg' %}"></div>
+      <div class="container">
+         <div class="row justify-content-center">
+            <div class="col-xxl-12">
+               <div class="breadcrumb__wrapper text-center">
+                  <h2 class="breadcrumb__title">Portfolio Details</h2>
+                  <div class="breadcrumb__menu">
+                     <nav>
+                        <ul>
+                           <li><span><a href="index.html">Home</a></span></li>
+                           <li><span>Portfolio Details</span></li>
+                        </ul>
+                     </nav>
                   </div>
                </div>
             </div>
          </div>
       </div>
-      <!-- Breadcrumb area start  -->
+   </div>
+   <!-- Breadcrumb area end -->
 
       <!-- Portfolio area start -->
       <section class="pt-120 pb-120">
          <div class="container">
-            <h3 class="mb-30">{{ portfolio.title }}</h3>
-            <p>{{ portfolio.description|safe }}</p>
+            <h3 class="mb-30">Portfolio Details</h3>
+            <p>Nulla faucibus malesuada. In placerat feugiat eros ac tempor. Integer euismod massa sapien, et consequat
+               enim laoreet
+               et. Nulla sit amet nisi dapibus, gravida turpis sit amet, accumsan nisl. Fusce vel semper risus. Morbi
+               congue eros
+               sagittis, sodales turpis venenatis, iaculis dui. Proin ac purus sed nibh dapibus neque. scelerisque sed
+               quis ante eros
+               suspendisse potenti. Mauris vitae sagittis diam. Vivamus imperdiet nulla ut nisi fermentum, vitae euismod
+               mi egestas. In
+               quis auctor magna. Maecenas sodales nunc tellus, non iaculis est iaculis placerat. Morbi suscipit,</p>
             <ul class="portfolio__info mt-30 mb-40">
-                <li><span>Date:</span> {{ portfolio.created_date|date:"F j, Y" }}</li>
-                <li><span>Category:</span> {{ portfolio.category }}</li>
-                <li><span>Client:</span> {{ portfolio.client }}</li>
-                <li><span>Location:</span> {{ portfolio.location }}</li>
+               <li><span>Date:</span> 10, February 2024</li>
+               <li><span>Category:</span> Felix Art</li>
+               <li><span>Client:</span> Robert Fox</li>
+               <li><span>Location:</span> fot kde, USA</li>
             </ul>
-            <img class="w-100" src="{{ portfolio.image.url }}" alt="{{ portfolio.title }}">
-            <p class="mt-30">{{ portfolio.description|safe }}</p>
-        </div>        
+            <img class="w-100" src="{% static 'imgs/project/project-details.jpg' %}" alt="image">
+            <p class="mt-30">Pellentesque egestas rutrum nibh facilisis ultrices. Phasellus in magna ut orci malesuada
+               sollicitudin. Aenean faucibus
+               scelerisque convallis. Quisque interdum mauris id nunc molestie, ac tincidunt erat gravida. Nullam dui
+               libero, mollis ac
+               quam et, venenatis tincidunt quam. Proin nec volutpat ligula, id porttitor augue. Proin id volutpat
+               massa. Vivamus
+               tincidunt nunc justo, ac aliquam ex molestie id.</p>
+         </div>
       </section>
       <!-- Portfolio area end -->
 
-   </main>
-   <!-- Body main wrapper end -->
+</main>
+<!-- Body main wrapper end -->
 
-   {% endblock content %}     
+{% endblock content %}

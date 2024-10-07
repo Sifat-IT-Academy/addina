@@ -30,6 +30,15 @@ class Blog(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(BlogCategory, on_delete=models.CASCADE)
 
+
+    def comments_count(self):
+        # pass
+        return self.comments.count()
+
+    class Meta:
+        verbose_name = _("Blog")
+        verbose_name_plural = _("Blogs")
+
 class BlogComment(models.Model):
     blog = models.ForeignKey('Blog', on_delete=models.CASCADE, related_name='comments')
     author = models.CharField(max_length=100)
@@ -39,6 +48,7 @@ class BlogComment(models.Model):
     active = models.BooleanField(default=True)
     parent = models.ForeignKey('self', null=True, blank=True, related_name='replies', on_delete=models.CASCADE)
 
+
     
     def __str__(self):
         return f'Comment by {self.author} on {self.post}'
@@ -47,5 +57,21 @@ class BlogComment(models.Model):
         verbose_name = _("Blog Comment")
         verbose_name_plural = _("Blog Comments")
 
+
+
+class Blog_details(models.Model):
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+    detail_content = RichTextField()
+    image = models.ImageField(upload_to='blog_images/', blank=True, null=True)
+
     def __str__(self):
+        return f"Details for {self.blog.title}"
+    
+
+    def __str__(self):
+<<<<<<< HEAD
         return f"Comment by {self.user} on {self.blog}"
+=======
+        return f"Comment by {self.user} on {self.blog}"
+
+>>>>>>> ffa80903c789f0f2e8c562fbbadaa7aa4cd6a0a2

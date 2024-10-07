@@ -96,7 +96,7 @@
               
                <div class="mobile-menu fix mb-40"></div>
                <div class="offcanvas__contact mt-30 mb-20">
-                  <h4>Contact Info</h4>
+                  <h4>{% blocktranslate %} Kontakt malumotlari {% endblocktranslate %}</h4>
                   <ul>
                      <li class="d-flex align-items-center">
                         <div class="offcanvas__contact-icon mr-15">
@@ -224,9 +224,15 @@
                                     <span class="old-price">$30.35</span>
                                     <span class="new-price">$19.25</span>
                                  </div>
-                                 <p>Priyoshop has brought to you the Hijab 3 Pieces Combo Pack PS23. It is a completely
+                                 <!-- <p>Priyoshop has brought to you the Hijab 3 Pieces Combo Pack PS23. It is a completely
                                     modern design and you feel comfortable to put on this hijab. Buy it at the best
-                                    price.</p>
+                                    price.</p> -->
+                                 <p>{% blocktranslate %}
+                                    Priyoshop sizga PS23 Hijobli 3 Pieces Combo Packni olib keldi. Bu butunlay
+                                    zamonaviy dizayn va siz ushbu hijobni kiyishni qulay his qilasiz. Uni eng yaxshi narxda sotib oling
+                                    narx. 
+                                    {% endblocktranslate %}
+                                 </p>
 
                                  <div class="product__details-action mb-35">
                                     <div class="product__quantity">
@@ -289,7 +295,18 @@
                      <a href="tel:+380961381876">+380961381876</a>
                   </div>
                   <div class="header-top-notice d-none d-lg-block">
-                     <p>TAKE CARE OF YOUR Health <span class="text-white">25% OFF</span> USE CODE “ DOFIX03 ”</p>
+                     <!-- <p>TAKE CARE OF YOUR Health <span class="text-white">25% OFF</span> USE CODE “ DOFIX03 ”</p> -->
+                     <p>
+                        {% blocktranslate %} 
+                        SALOMATINGIZGA G'amxo'rlik qiling
+                        {% endblocktranslate %}
+                        <span class="text-white">25% OFF</span> 
+                        {% blocktranslate %} 
+                        KOD ISHLATISH 
+                        {% endblocktranslate %}
+                        "DOFIX03"
+                    </p>
+                    
                   </div>
 
 
@@ -355,17 +372,17 @@
                               <nav id="mobile-menu">
                                  <ul>
                                     <li class="has-dropdown">
-                                       <a href="{% url 'home-page' %}">Home</a>
+                                       <a href="{% url 'home-page' %}">{% blocktranslate %} Asosoiy sahifa {% endblocktranslate %}</a>
                                     </li>
                                     <li>
-                                       {% comment %} <a href="{% url 'about-page' %}">About</a> {% endcomment %}
+                                       {% comment %} <a href="{% url 'about-page' %}">{% blocktranslate %} Biz haqimizda {% endblocktranslate %}</a> {% endcomment %}
                                     </li>
                                     <li class="has-dropdown">
-                                       <a href="{% url 'product-page' %}">Product</a>
+                                       <a href="{% url 'product-page' %}">{% blocktranslate %} Mahsulotlar {% endblocktranslate %}</a>
                                        
                                     </li>
                                     <li class="has-dropdown">
-                                       <a href="{% url 'cart-page' %}">Cart</a>
+                                       <a href="{% url 'cart-page' %}">{% blocktranslate %} Savatcha {% endblocktranslate %}</a>
                                     </li>
                                     <li class="has-dropdown">
                                        <a href="{% url 'portfolio-page' %}">Portfolio</a>
@@ -374,7 +391,7 @@
                                        <a href="{% url 'blog-page' %}">Blog</a>
                                     </li>
                                     <li>
-                                       <a href="{% url 'contact-page' %}">Contact</a>
+                                       <a href="{% url 'contact-page' %}">{% blocktranslate %} Biz bilan bog'lanish  {% endblocktranslate %}</a>
                                     </li>
                                  </ul>
                               </nav>
@@ -486,11 +503,11 @@
                   </div>
                   <div class="footer-link">
                      <ul>
-                        <li><a href="{% url 'home-page' %}">Home</a></li>
-                        <li><a href="about.html">About us </a></li>
-                        <li><a href="about.html">Pages</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="contact.html">Contact us</a></li>
+                        <li><a href="{% url 'home-page' %}">{% blocktranslate %} Asosoiy sahifa {% endblocktranslate %}</a></li>
+                        <li><a href="{% url 'about-page' %}">{% blocktranslate %} Biz haqimizda {% endblocktranslate %}</a></li>
+                        <li><a href="{% url 'about-page' %}">Pages</a></li>
+                        <li><a href="{% url 'blog-page' %}">Blog</a></li>
+                        <li><a href="{% url 'contact-page' %}">Contact us</a></li>
                      </ul>
                   </div>
                </div>
