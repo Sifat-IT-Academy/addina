@@ -1,0 +1,31 @@
+
+.custom-lang-select {
+    background-color: #b18a60; 
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    appearance: none; 
+    position: relative;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSI2Ij48cGF0aCBmaWxsPSIjZmZmIiBkPSJNNSA1bC01LTUgMS0xIDQgNCA0LTRsMSAxLTUgNXoiLz48L3N2Zz4=");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px 6px;
+}
+
+.custom-lang-select:focus {
+    outline: none;
+
+}
+
+/* Maxsus select maydonchasi o'qchasi uchun */
+.custom-lang-select::-ms-expand {
+    display: none; /* Internet Explorer va eski Edge versiyalari uchun o'qni yashirish */
+}
+
+/* Til tanlash formasi uslubi */
+.header-lang-item.header-lang {
+    display: inline-block;
+}
