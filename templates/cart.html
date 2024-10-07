@@ -17,7 +17,7 @@
                      <div class="breadcrumb__menu">
                         <nav>
                            <ul>
-                              <li><span><a href="{% url 'home-page' %}">Home</a></span></li>
+                              <li><span><a href="index.html">Home</a></span></li>
                               <li><span>Cart</span></li>
                            </ul>
                         </nav>
@@ -52,7 +52,7 @@
                               <td class="product-thumbnail"><a href="product-details.html"><img
                                        src="{{cart.product.image.url}}" alt="img"></a></td>
                               <td class="product-name"><a href="product-details.html">{{cart.product.title}}</a></td>
-                              <td class="product-price"><span class="amount">${{cart.product.price}}</span></td>
+                              <td class="product-price"><span class="amount" data-price="{{cart.product.price}}">${{cart.product.price}}</span></td>
                               <td class="product-quantity text-center">
                                  <div class="product-quantity mt-10 mb-10">
                                     <div class="product-quantity-form">
@@ -65,11 +65,9 @@
                                  </div>
                               </td>
                               <td class="product-subtotal"><span class="amount">${{cart.product.price}}</span></td>
-                              <td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
+                              <td class="product-remove"><a href="#" class="remove-item" data-id="{{ cart.id }}"><i class="fa fa-times"></i></a></td>
                            </tr>
                            {% endfor %}
-
-                           
                         </tbody>
                      </table>
                   </div>
@@ -79,6 +77,7 @@
                            <div class="coupon d-flex align-items-center">
                               <input id="coupon_code" class="input-text" name="coupon_code" placeholder="Coupon code"
                                  type="text">
+
                               <button onclick="window.location.reload()" class="fill-btn" type="submit">
                                  <span class="fill-btn-inner">
                                     <span class="fill-btn-normal">apply coupon</span>
@@ -124,4 +123,4 @@
    <!-- Body main wrapper end -->
 
 
-   {% endblock content %}     
+   {% endblock content %}
