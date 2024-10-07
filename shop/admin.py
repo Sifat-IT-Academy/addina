@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product,ProductCategory,ProductComment
+from .models import *
 from django.utils.html import format_html
 
 @admin.register(Product)
@@ -17,5 +17,10 @@ class ProductCommentAdmin(admin.ModelAdmin):
     list_display = ('product', 'create_date', 'comment', 'rating')
     readonly_fields = ['id']
 
-     
+
+@admin.register(Wishlist)
+class CartAdmin(admin.ModelAdmin):
+    list_display = ('product', ) 
+    list_filter = ('is_active',)
+
     
