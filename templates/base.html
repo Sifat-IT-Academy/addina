@@ -3,7 +3,7 @@
 
 <!doctype html>
 <html class="no-js" lang="zxx">
-   
+
 <head>
    <meta charset="utf-8">
    <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -15,6 +15,7 @@
    <link rel="shortcut icon" type="image/x-icon" href="{% static 'imgs/furniture/favicon.png' %}">
 
    <!-- CSS here -->
+   <link rel="stylesheet" href="{% static 'css/languages.css' %}">
    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
    <link rel="stylesheet" href="{% static 'css/meanmenu.min.css' %}">
    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
@@ -83,7 +84,7 @@
             <div class="offcanvas__content">
                <div class="offcanvas__top mb-40 d-flex justify-content-between align-items-center">
                   <div class="offcanvas__logo">
-                     <a href="#">
+                     <a href="index.html">
                         <img src="{% static 'imgs/furniture/logo/logo-light.svg' %}" alt="logo not found">
                      </a>
                   </div>
@@ -96,7 +97,7 @@
               
                <div class="mobile-menu fix mb-40"></div>
                <div class="offcanvas__contact mt-30 mb-20">
-                  <h4>{% blocktranslate %} Kontakt malumotlari {% endblocktranslate %}</h4>
+                  <h4>Contact Info</h4>
                   <ul>
                      <li class="d-flex align-items-center">
                         <div class="offcanvas__contact-icon mr-15">
@@ -224,15 +225,9 @@
                                     <span class="old-price">$30.35</span>
                                     <span class="new-price">$19.25</span>
                                  </div>
-                                 <!-- <p>Priyoshop has brought to you the Hijab 3 Pieces Combo Pack PS23. It is a completely
+                                 <p>Priyoshop has brought to you the Hijab 3 Pieces Combo Pack PS23. It is a completely
                                     modern design and you feel comfortable to put on this hijab. Buy it at the best
-                                    price.</p> -->
-                                 <p>{% blocktranslate %}
-                                    Priyoshop sizga PS23 Hijobli 3 Pieces Combo Packni olib keldi. Bu butunlay
-                                    zamonaviy dizayn va siz ushbu hijobni kiyishni qulay his qilasiz. Uni eng yaxshi narxda sotib oling
-                                    narx. 
-                                    {% endblocktranslate %}
-                                 </p>
+                                    price.</p>
 
                                  <div class="product__details-action mb-35">
                                     <div class="product__quantity">
@@ -295,31 +290,26 @@
                      <a href="tel:+380961381876">+380961381876</a>
                   </div>
                   <div class="header-top-notice d-none d-lg-block">
-                     <!-- <p>TAKE CARE OF YOUR Health <span class="text-white">25% OFF</span> USE CODE “ DOFIX03 ”</p> -->
-                     <p>
-                        {% blocktranslate %} 
-                        SALOMATINGIZGA G'amxo'rlik qiling
-                        {% endblocktranslate %}
-                        <span class="text-white">25% OFF</span> 
-                        {% blocktranslate %} 
-                        KOD ISHLATISH 
-                        {% endblocktranslate %}
-                        "DOFIX03"
-                    </p>
-                    
+                     <p>TAKE CARE OF YOUR Health <span class="text-white">25% OFF</span> USE CODE “ DOFIX03 ”</p>
                   </div>
 
 
                   <div class="tp-header-top-menu d-flex align-items-center justify-content-end">
                      <div class="header-lang-item header-lang">
-                        <form action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                        <form id="language-form" action="{% url 'set_language' %}" method="post">
+                            {% csrf_token %}
                             <input name="next" type="hidden" value="{{ redirect_to }}">
-                            <select style="background-color: transparent; border: none; outline: none; color: #fff;" name="language" onchange="this.form.submit()">
+                            <select name="language" id="language-select" class="custom-lang-select">
+                                {% get_current_language as LANGUAGE_CODE %}
                                 {% get_available_languages as LANGUAGES %}
                                 {% get_language_info_list for LANGUAGES as languages %}
                                 {% for language in languages %}
-                                    <option style="color: #000;" value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-                                        {{ language.name_local }} ({{ language.code }})
+                                    <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected {% endif %}>
+                                        {% if language.code == 'uz' %}
+                                             ({{ language.code }})
+                                        {% else %}
+                                       ({{ language.code }})
+                                        {% endif %}
                                     </option>
                                 {% endfor %}
                             </select>
@@ -327,7 +317,18 @@
                     </div>
                     
                     
-                  
+                    
+                     <div class="header-lang-item tp-header-currency">
+                        <span class="header-currency-toggle text-white" id="header-currency-toggle">{% blocktranslate %}Kirish{% endblocktranslate %}</span>
+                        <ul>
+                           <li>
+                              <a class="furniture-clr-hover" href="{% url 'login-page'%}">{% blocktranslate %}Kirish{% endblocktranslate %}</a>
+                           </li>
+                           <li>
+                              <a class="furniture-clr-hover" href="{% url 'register-page'%}">{% blocktranslate %}Ro'yhatdan utish{% endblocktranslate %}</a>
+                           </li>
+                        </ul>
+                     </div>
                      <div class="header-lang-item tp-header-setting">
                         
                         <span class="header-setting-toggle text-white" id="header-setting-toggle">
@@ -346,7 +347,12 @@
                               <a class="furniture-clr-hover" href="{% url 'profile-page' request.user.id %}">My Profile</a>
                               
                            </li>
-                       
+                           <li>
+                              <a class="furniture-clr-hover" href="wishlist.html">Wishlist</a>
+                           </li>
+                           <li>
+                              <a class="furniture-clr-hover" href="cart.html">Cart</a>
+                           </li>
                            <li>
                               <a href="{% url 'logout-page' %}">Logout</a>
                            </li>
@@ -363,7 +369,7 @@
                   <div class="header-main-4">
                      <div class="header-left">
                         <div class="header-logo">
-                           <a href="{% url 'home-page' %}">
+                           <a href="index.html">
                               <img src="{% static 'imgs/furniture/logo/logo.svg' %}" alt="logo not found">
                            </a>
                         </div>
@@ -372,26 +378,26 @@
                               <nav id="mobile-menu">
                                  <ul>
                                     <li class="has-dropdown">
-                                       <a href="{% url 'home-page' %}">{% blocktranslate %} Asosoiy sahifa {% endblocktranslate %}</a>
+                                       <a href="{% url 'home-page' %}">{% blocktranslate %}Asosiy sahifa{% endblocktranslate %}</a>
                                     </li>
                                     <li>
-                                       {% comment %} <a href="{% url 'about-page' %}">{% blocktranslate %} Biz haqimizda {% endblocktranslate %}</a> {% endcomment %}
+                                       <a href="{% url 'about-page' %}">{% blocktranslate %}Biz haqimizda{% endblocktranslate %}</a>
                                     </li>
                                     <li class="has-dropdown">
-                                       <a href="{% url 'product-page' %}">{% blocktranslate %} Mahsulotlar {% endblocktranslate %}</a>
+                                       <a href="{% url 'product-page' %}">{% blocktranslate %}Mahsulot{% endblocktranslate %}</a>
                                        
                                     </li>
                                     <li class="has-dropdown">
-                                       <a href="{% url 'cart-page' %}">{% blocktranslate %} Savatcha {% endblocktranslate %}</a>
+                                       <a href="{% url 'cart-page' %}">{% blocktranslate %} Cart{% endblocktranslate %}   </a>
                                     </li>
                                     <li class="has-dropdown">
-                                       <a href="{% url 'portfolio-page' %}">Portfolio</a>
+                                       <a href="{% url 'portfolio-page' %}">{% blocktranslate %} Portfolio{% endblocktranslate %}</a>
                                     </li>
                                     <li class="has-dropdown">
-                                       <a href="{% url 'blog-page' %}">Blog</a>
+                                       <a href="{% url 'blog-page' %}">{% blocktranslate %} Blog{% endblocktranslate %}</a>
                                     </li>
                                     <li>
-                                       <a href="{% url 'contact-page' %}">{% blocktranslate %} Biz bilan bog'lanish  {% endblocktranslate %}</a>
+                                       <a href="{% url 'contact-page' %}">{% blocktranslate %} Biz bilan bog'lanish{% endblocktranslate %}</a>
                                     </li>
                                  </ul>
                               </nav>
@@ -471,10 +477,10 @@
             <div class="footer-grid-3">
                <div class="footer-widget-4">
                   <div class="footer-logo mb-35">
-                     <a href="{% url 'home-page' %}"><img src="{% static 'imgs/furniture/logo/logo-light.svg' %}"
+                     <a href="index.html"><img src="{% static 'imgs/furniture/logo/logo-light.svg' %}"
                            alt="image bnot found"></a>
                   </div>
-                  <p>It helps designers plan out where the content will sit, the content to be written and approved.
+                  <p>{% blocktranslate %}Bu dizaynerlarga kontentning qayerda joylashishini, yozilishi va tasdiqlanishini rejalashtirishga yordam beradi.{% endblocktranslate %}
                   </p>
                   <div class="theme-social">
                      <a class="furniture-bg-hover" href="#"><i class="fa-brands fa-facebook-f"></i></a>
@@ -489,31 +495,31 @@
                   </div>
                   <div class="footer-link">
                      <ul>
-                        <li><a href="error.html">Log In</a></li>
-                        <li><a href="wishlist.html">Wishlist</a></li>
-                        <li><a href="error.html">Return Policy</a></li>
-                        <li><a href="error.html">Privacy policy</a></li>
-                        <li><a href="faq.html">Shopping FAQs</a></li>
+                        <li><a href="error.html">{% blocktranslate %}Tizimga kirish{% endblocktranslate %}</a></li>
+                        <li><a href="wishlist.html">{% blocktranslate %}Istaklar roʻyxati{% endblocktranslate %}</a></li>
+                        <li><a href="error.html">{% blocktranslate %}Qaytarish siyosati{% endblocktranslate %}</a></li>
+                        <li><a href="error.html">{% blocktranslate %}Maxfiylik siyosati{% endblocktranslate %}</a></li>
+                        <li><a href="faq.html">{% blocktranslate %}Xarid haqida tez-tez so'raladigan savollar{% endblocktranslate %}</a></li>
                      </ul>
                   </div>
                </div>
                <div class="footer-widget-4">
                   <div class="footer-widget-title">
-                     <h4>Company</h4>
+                     <h4>{% blocktranslate %}Kompaniya{% endblocktranslate %}</h4>
                   </div>
                   <div class="footer-link">
                      <ul>
-                        <li><a href="{% url 'home-page' %}">{% blocktranslate %} Asosoiy sahifa {% endblocktranslate %}</a></li>
-                        <li><a href="{% url 'about-page' %}">{% blocktranslate %} Biz haqimizda {% endblocktranslate %}</a></li>
-                        <li><a href="{% url 'about-page' %}">Pages</a></li>
-                        <li><a href="{% url 'blog-page' %}">Blog</a></li>
-                        <li><a href="{% url 'contact-page' %}">Contact us</a></li>
+                        <li><a href="index.html">{% blocktranslate %}Asosiy sahifa{% endblocktranslate %}</a></li>
+                        <li><a href="about.html">{% blocktranslate %}Biz haqimizda{% endblocktranslate %} </a></li>
+                        <li><a href="about.html">{% blocktranslate %}Sahifalar{% endblocktranslate %}</a></li>
+                        <li><a href="blog.html">{% blocktranslate %}Blog{% endblocktranslate %}</a></li>
+                        <li><a href="contact.html">{% blocktranslate %}Biz bilan bog'lanish{% endblocktranslate %}</a></li>
                      </ul>
                   </div>
                </div>
                <div class="footer-widget footer-col-4">
                   <div class="footer-widget-title">
-                     <h4>Contact</h4>
+                     <h4>{% blocktranslate %}Aloqa{% endblocktranslate %}</h4>
                   </div>
                   <div class="footer-info mb-35">
                      <p class="w-75">4517 Washington Ave. Manchester, Kentucky 39495</p>
@@ -533,7 +539,7 @@
                         </div>
                         <div class="footer-info-text">
                            <a class="furniture-clr-hover" href="tel:012-345-6789">+964 742 44 763</a>
-                           <p>Mon - Sat: 9 AM - 5 PM</p>
+                           <p>{% blocktranslate %}Dushanba - Shanba: 9:00 - 17:00{% endblocktranslate %}</p>
                         </div>
                      </div>
                   </div>
@@ -546,7 +552,7 @@
       <div class="footer-copyright-area b-t">
          <div class="footer-copyright-wrapper">
             <div class="footer-copyright-text">
-               <p class="mb-0">© All Copyright 2024 by <a target="_blank" class="furniture-clr-hover"
+               <p class="mb-0">{% blocktranslate %}© Barcha mualliflik huquqi 2024 tomonidan{% endblocktranslate %} <a target="_blank" class="furniture-clr-hover"
                      href="#">Addina</a></p>
             </div>
             <div class="footer-payment d-flex align-items-center gap-2">
@@ -568,8 +574,8 @@
             </div>
             <div class="footer-conditions">
                <ul>
-                  <li><a class="furniture-clr-hover" href="#">Terms & Condition</a></li>
-                  <li><a class="furniture-clr-hover" href="#">Privacy Policy</a></li>
+                  <li><a class="furniture-clr-hover" href="#">{% blocktranslate %}Shartlar{% endblocktranslate %}</a></li>
+                  <li><a class="furniture-clr-hover" href="#">{% blocktranslate %}Maxfiylik siyosati{% endblocktranslate %}</a></li>
                </ul>
             </div>
          </div>
@@ -577,7 +583,16 @@
    </div>
 </footer>
  <!-- Footer area end -->
+ <script>
+   document.addEventListener('DOMContentLoaded', function() {
+       const languageSelect = document.getElementById('language-select');
+       const languageForm = document.getElementById('language-form');
 
+       languageSelect.addEventListener('change', function() {
+           languageForm.submit();
+       });
+   });
+</script>
  <!-- JS here -->
   {% block js %} {% endblock js %}
  <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
@@ -595,5 +610,5 @@
 </body>
 
 
-<!-- Mirrored from gramentheme.com/html/addina/{% url 'home-page' %} by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Aug 2024 05:35:06 GMT -->
+<!-- Mirrored from gramentheme.com/html/addina/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Aug 2024 05:35:06 GMT -->
 </html>
