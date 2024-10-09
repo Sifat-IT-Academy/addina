@@ -1,22 +1,15 @@
-<<<<<<< HEAD
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Blog,BlogCategory,BlogComment,BlogTag
 from django.db.models import Count
 from .forms import CommentForm, ReplyForm
 from django.views.generic import ListView
-from django.db.models import Count
 from django.views.generic import DetailView
-=======
-from django.shortcuts import render
-from django.views.generic import ListView
-from .models import Blog,BlogCategory,BlogComment,BlogTag,Blog_details
->>>>>>> ffa80903c789f0f2e8c562fbbadaa7aa4cd6a0a2
+from .models import *
+
 
 class BlogListView(ListView):
     model = Blog
     context_object_name = "blogs"
     template_name = "blog.html"
-<<<<<<< HEAD
     paginate_by = 3
 
     def get_queryset(self):
@@ -31,7 +24,6 @@ class BlogListView(ListView):
             return Blog.objects.filter(category__id=category_id)
         if q:
             return Blog.objects.filter(title__icontains=q)
-
         return Blog.objects.all()
 
     def get_context_data(self, **kwargs):
@@ -39,13 +31,8 @@ class BlogListView(ListView):
         context['categories'] = BlogCategory.objects.annotate(blog_count=Count('blog'))
         context['tags'] = BlogTag.objects.annotate(blog_count=Count('blogs'))
         context['all_blogs_count'] = Blog.objects.count()
-
-        # Add comments
         context['comments'] = BlogComment.objects.select_related('blog').all()
-
-        # Add the latest 3 blogs
         context['recent_blogs'] = Blog.objects.order_by('-created_date').all()[:3]
-
         if 'category_id' in self.kwargs:
             context['current_category'] = BlogCategory.objects.get(id=self.kwargs['category_id'])
         if 'tag_id' in self.kwargs:
@@ -135,11 +122,10 @@ class BlogDetailView(DetailView):
             context['comment_form'] = form
             context['reply_form'] = reply_form
             return self.render_to_response(context)
-=======
     paginate_by = 2 
     
 class Blog_detailsListView(ListView):
     model = Blog_details
     context_object_name = 'blog_details'
     template_name = 'blog-details.html'
->>>>>>> ffa80903c789f0f2e8c562fbbadaa7aa4cd6a0a2
+
