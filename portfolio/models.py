@@ -34,9 +34,6 @@ class Portfolio(models.Model):
         verbose_name = _("Portfolio")
         verbose_name_plural = _("Portfolios")
 
-<<<<<<< HEAD
-=======
-
 from django.utils.text import slugify
 
 class Portfolio_details(models.Model):
@@ -58,4 +55,4 @@ class Portfolio_details(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super().save(*args, **kwargs)
->>>>>>> ffa80903c789f0f2e8c562fbbadaa7aa4cd6a0a2
+
