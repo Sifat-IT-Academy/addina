@@ -9,7 +9,7 @@ urlpatterns = [
 #     path('account/', include('account.urls')),
 ]+ i18n_patterns(
     path('i18n/', include('django.conf.urls.i18n')),
-    path('shop/', include('shop.urls')),
+    path('', include('shop.urls')),
     path('blog/', include('blog.urls')),
     path('portfolio/', include('portfolio.urls')),
     path('cart/', include('cart.urls')),

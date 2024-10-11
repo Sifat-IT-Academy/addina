@@ -69,9 +69,5 @@ class Blog_details(models.Model):
     
 
     def __str__(self):
-<<<<<<< HEAD
-        return f"Comment by {self.user} on {self.blog}"
-=======
-        return f"Comment by {self.user} on {self.blog}"
 
->>>>>>> ffa80903c789f0f2e8c562fbbadaa7aa4cd6a0a2
+        return f"Comment by {self.user} on {self.blog}"

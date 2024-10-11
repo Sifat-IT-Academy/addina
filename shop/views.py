@@ -1,4 +1,3 @@
-from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 from .models import *
 from django.shortcuts import render, redirect, get_object_or_404
@@ -16,9 +15,6 @@ class ProductListView(ListView):
     template_name = 'product.html'
     context_object_name = 'products'
     paginate_by = 3
-
-
-
 
 def product_details_view(request, product_id):
     product = get_object_or_404(Product, id=product_id)
@@ -44,3 +40,9 @@ def product_details_view(request, product_id):
         'form': form,
         'ratings_range': range(1, 6) 
     })
+
+class Wishlist(ListView):
+    model = Wishlist
+    template_name = 'wishlist.html'
+    context_object_name = 'wishlist'
+

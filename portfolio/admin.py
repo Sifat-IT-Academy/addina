@@ -6,7 +6,6 @@ from django.utils.html import format_html
 
 
 
-admin.site.register(( PortfolioCategory))
 
 @admin.register(Portfolio)
 class PortfolioAdmin(admin.ModelAdmin):
@@ -31,8 +30,5 @@ class PortfolioAdmin(admin.ModelAdmin):
 @admin.register(PortfolioCategory)
 class PortfolioCategoryAdmin(admin.ModelAdmin):
     list_display = ('name',)
-@admin.register(Portfolio)
-class PortfolioAdmin(admin.ModelAdmin):
-    list_display = ("user", "category", "title")
 
 

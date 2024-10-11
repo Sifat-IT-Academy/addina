@@ -59,3 +59,8 @@ class ProductComment(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     rating = IntegerRangeField(min_value=1, max_value=5, default=3)
 
+class Wishlist(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    is_active = models.BooleanField(default=True)
