@@ -29,95 +29,84 @@
       </div>
       <!-- Breadcrumb area start  -->
 
-      <!-- Cart area start  -->
-      <div class="cart-area section-space">
-         <div class="container">
-            <div class="row">
-               <div class="col-12">
-                  <div class="table-content table-responsive">
-                     <table class="table">
-                        <thead>
+<!-- Cart area start  -->
+<div class="cart-area section-space">
+   <div class="container">
+       <div class="row">
+           <div class="col-12">
+               <div class="table-content table-responsive">
+                   <table class="table">
+                       <thead>
                            <tr>
-                              <th class="product-thumbnail">Images</th>
-                              <th class="cart-product-name">Product</th>
-                              <th class="product-price">Unit Price</th>
-                              <th class="product-quantity">Quantity</th>
-                              <th class="product-subtotal">Total</th>
-                              <th class="product-remove">Remove</th>
+                               <th class="product-thumbnail">Images</th>
+                               <th class="cart-product-name">Product</th>
+                               <th class="product-price">Unit Price</th>
+                               <th class="product-quantity">Quantity</th>
+                               <th class="product-subtotal">Total</th>
+                               <th class="product-remove">Remove</th>
                            </tr>
-                        </thead>
-                        <tbody>
+                       </thead>
+                       <tbody>
                            {% for cart in carts %}
                            <tr>
-                              <td class="product-thumbnail"><a href="product-details.html"><img
-                                       src="{{cart.product.image.url}}" alt="img"></a></td>
-                              <td class="product-name"><a href="product-details.html">{{cart.product.title}}</a></td>
-                              <td class="product-price"><span class="amount" data-price="{{cart.product.price}}">${{cart.product.price}}</span></td>
-                              <td class="product-quantity text-center">
-                                 <div class="product-quantity mt-10 mb-10">
-                                    <div class="product-quantity-form">
-                                       <form action="#">
-                                          <button class="cart-minus"><i class="far fa-minus"></i></button>
-                                          <input class="cart-input" type="text" value="1">
-                                          <button class="cart-plus"><i class="far fa-plus"></i></button>
-                                       </form>
-                                    </div>
-                                 </div>
-                              </td>
-                              <td class="product-subtotal"><span class="amount">${{cart.product.price}}</span></td>
-                              <td class="product-remove"><a href="#" class="remove-item" data-id="{{ cart.id }}"><i class="fa fa-times"></i></a></td>
+                               <td class="product-thumbnail"><a href="product-details.html"><img src="{{cart.product.image.url}}" alt="img"></a></td>
+                               <td class="product-name"><a href="product-details.html">{{cart.product.title}}</a></td>
+                               <td class="product-price"><span class="amount" data-price="{{cart.product.price}}">${{cart.product.price}}</span></td>
+                               <td class="product-quantity text-center">
+                                   <div class="product-quantity mt-10 mb-10">
+                                       <div class="product-quantity-form">
+                                           <form action="#">
+                                               <button class="cart-minus"><i class="far fa-minus"></i></button>
+                                               <input class="cart-input" type="text" value="1">
+                                               <button class="cart-plus"><i class="far fa-plus"></i></button>
+                                           </form>
+                                       </div>
+                                   </div>
+                               </td>
+                               <td class="product-subtotal"><span class="amount">${{cart.product.price}}</span></td>
+                               <td class="product-remove"><a href="#" class="remove-item" data-id="{{ cart.id }}"><i class="fa fa-times"></i></a></td>
                            </tr>
                            {% endfor %}
-                        </tbody>
-                     </table>
-                  </div>
-                  <div class="row">
-                     <div class="col-12">
-                        <div class="coupon-all">
-                           <div class="coupon d-flex align-items-center">
-                              <input id="coupon_code" class="input-text" name="coupon_code" placeholder="Coupon code"
-                                 type="text">
-
-                              <button onclick="window.location.reload()" class="fill-btn" type="submit">
-                                 <span class="fill-btn-inner">
-                                    <span class="fill-btn-normal">apply coupon</span>
-                                    <span class="fill-btn-hover">apply coupon</span>
-                                 </span>
-                              </button>
-                           </div>
+                       </tbody>
+                   </table>
+               </div>
+               <div class="row">
+                   <div class="col-12">
+                       <div class="coupon-all">
                            <div class="coupon2">
-                              <button onclick="window.location.reload()" class="fill-btn" type="submit">
-                                 <span class="fill-btn-inner">
-                                    <span class="fill-btn-normal">Update cart</span>
-                                    <span class="fill-btn-hover">Update cart</span>
-                                 </span>
-                              </button>
+                               <button onclick="window.location.reload()" class="fill-btn" type="submit">
+                                   <span class="fill-btn-inner">
+                                       <span class="fill-btn-normal">Update cart</span>
+                                       <span class="fill-btn-hover">Update cart</span>
+                                   </span>
+                               </button>
                            </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="col-lg-6 ml-auto">
-                        <div class="cart-page-total">
+                       </div>
+                   </div>
+               </div>
+               <div class="row">
+                   <div class="col-lg-6 ml-auto">
+                       <div class="cart-page-total">
                            <h2>Cart totals</h2>
                            <ul class="mb-20">
-                              <li>Subtotal <span>$78.00</span></li>
-                              <li>Total <span>$78.00</span></li>
+                               <li>Total Price: <span id="total-price">$0.00</span></li>  <!-- Umumiy narx -->
                            </ul>
                            <a class="fill-btn" href="checkout.html">
-                              <span class="fill-btn-inner">
-                                 <span class="fill-btn-normal">Proceed to checkout</span>
-                                 <span class="fill-btn-hover">Proceed to checkout</span>
-                              </span>
+                               <span class="fill-btn-inner">
+                                   <span class="fill-btn-normal">Proceed to checkout</span>
+                                   <span class="fill-btn-hover">Proceed to checkout</span>
+                               </span>
                            </a>
-                        </div>
-                     </div>
-                  </div>
+                       </div>
+                   </div>
                </div>
-            </div>
-         </div>
-      </div>
-      <!-- Cart area end  -->
+           </div>
+       </div>
+   </div>
+</div>
+<!-- Cart area end  -->
+
+
 
    </main>
    <!-- Body main wrapper end -->
