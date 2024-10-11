@@ -16,9 +16,6 @@ class ProductListView(ListView):
     context_object_name = 'products'
     paginate_by = 3
 
-
-
-
 def product_details_view(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     comments = product.productcomment_set.all()
