@@ -84,6 +84,7 @@
                                     </div>
                                     <div class="product-action-item">
                                        <button type="button" class="product-action-btn">
+                                          <a href="{% url 'add-from-cart' product.id %}">
                                           <svg width="20" height="22" viewBox="0 0 20 22" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
                                              <path
@@ -92,7 +93,9 @@
                                                 stroke-linejoin="round" />
                                           </svg>
                                           <span class="product-tooltip">Add to Cart</span>
+                                       </a>
                                        </button>
+                                       
                                        <button type="button" class="product-action-btn" data-bs-toggle="modal"
                                        data-bs-target="#producQuickViewModal">
                                           <svg width="26" height="18" viewBox="0 0 26 18" fill="none"

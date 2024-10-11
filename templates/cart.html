@@ -47,7 +47,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                {% for cart in carts %}
+                                {% for cart in cart_items %}
                                 <tr>
                                     <td class="product-thumbnail"><a href="product-details.html"><img
                                                 src="{{cart.product.image.url}}" alt="img"></a></td>
@@ -59,14 +59,14 @@
                                         <div class="product-quantity mt-10 mb-10">
                                             <div class="product-quantity-form">
                                                 <form action="#">
-                                                    <button class="cart-minus"><i class="far fa-minus"></i></button>
-                                                    <input class="cart-input" type="text" value="1">
-                                                    <button class="cart-plus"><i class="far fa-plus"></i></button>
+                                                    <a href="{% url 'sub-cart' cart.product.id %}"><i class="far fa-minus"></i></a>
+                                                    <input class="cart-input" type="text" value="{{cart.quantity}}">
+                                                    <a href="{% url 'add-from-cart' cart.product.id %}"><i class="far fa-plus"></i></a>
                                                 </form>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="product-subtotal"><span class="amount">${{cart.product.price}}</span>
+                                    <td ><span class="amount">${{cart.get_total}}</span>
                                     </td>
                                     <td class="product-remove"><a href="#" class="remove-item"
                                             data-id="{{ cart.id }}"><i class="fa fa-times"></i></a></td>
@@ -91,10 +91,10 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-6 ml-auto">
-                            <div class="cart-page-total">
+                            <div class="Cart-total">
                                 <h2>Cart totals</h2>
                                 <ul class="mb-20">
-                                    <li>Total Price: <span id="total-price">$0.00</span></li> <!-- Umumiy narx -->
+                                    <li>Total Price: <span id="total-price">${{total}}</span></li> <!-- Umumiy narx -->
                                 </ul>
                                 <a class="fill-btn" href="checkout.html">
                                     <span class="fill-btn-inner">
