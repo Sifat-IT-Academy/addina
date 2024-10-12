@@ -1,67 +1,69 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import ListView
-from .models import Cart
+from .models import Cart, CartItem
+from shop.models import Product
+from django.core.exceptions import ObjectDoesNotExist
 
-class CartListView(ListView):
-    model = Cart
-    template_name = 'cart.html'
-    context_object_name = 'carts'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['total_items'] = self.model.objects.count()
-        context['total_price'] = sum(cart.product.price * 1 for cart in self.model.objects.all())  # Total price calculation
-        return context
+def cart(request):
+    try:
+        cart= Cart.objects.get(session_id=_cart_id(request))
+        cart_items = CartItem.objects.filter(cart=cart,is_active=True)
+        total = 0
+        for cart_item in cart_items:
+            total += cart_item.quantity*cart_item.product.price
+        context = {
+        'cart_items': cart_items,
+        'total':total,
+        'count':len(cart_items)
+    }
+    
+    except ObjectDoesNotExist:
+        context={}
+    
+    return render(request, 'cart.html', context)
+    
+def _cart_id(request):
+    cart = request.session.session_key
+    if not cart:
+        cart = request.session.create()
+    return cart
 
-# Mahsulotni cartdan o'chirish funksiyasi
-def remove_from_cart(request, cart_id):
-    cart_item = get_object_or_404(Cart, id=cart_id)
+def add_cart(request, product_id):        
+    product = Product.objects.get(id=product_id)
+    
+    try:
+        cart = Cart.objects.get(session_id=_cart_id(request))      
+    except Cart.DoesNotExist:
+        cart = Cart.objects.create(session_id=_cart_id(request))
+    cart.save()
+    
+    try:
+        cart_item = CartItem.objects.get(product=product, cart=cart)
+        cart_item.quantity += 1
+        cart_item.save()
+    except CartItem.DoesNotExist:
+        cart_item = CartItem.objects.create(
+            product = product,
+            cart = cart,
+            quantity = 1
+        )
+        cart_item.save()
+    return redirect('cart')
+
+def sub_cart(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    cart = Cart.objects.get(session_id=_cart_id(request))
+    cart_item = CartItem.objects.get(product=product, cart=cart)
+    if cart_item.quantity > 1:
+        cart_item.quantity -= 1
+        cart_item.save()
+    else:
+        cart_item.delete()
+    return redirect('cart')
+
+def remove_cart(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    cart = Cart.objects.get(session_id=_cart_id(request))
+    cart_item = CartItem.objects.get(product=product, cart=cart)
     cart_item.delete()
-    return redirect('cart-page')  # Sahifa nomi urls.py dan olinyapti
-
-
-# Coupon
-
-# from .models import Coupon
-
-# class CartListView(ListView):
-#     model = Cart
-#     template_name = 'cart.html'
-#     context_object_name = 'carts'
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         carts = self.model.objects.filter(user=self.request.user)
-#         total_price = sum(cart.product.price * 1 for cart in carts)  # Total price calculation
-        
-#         coupon_code = self.request.GET.get('coupon_code')  # Get coupon code from GET request
-#         coupon_discount = 0
-#         coupon_applied = False
-        
-#         # If a coupon code is provided
-#         if coupon_code:
-#             try:
-#                 coupon = Coupon.objects.get(code=coupon_code)
-#                 if coupon.discount_type == 'percentage':
-#                     coupon_discount = total_price * (coupon.discount_value / 100)
-#                 elif coupon.discount_type == 'fixed':
-#                     coupon_discount = coupon.discount_value
-#                 coupon_applied = True
-#             except Coupon.DoesNotExist:
-#                 coupon_discount = 0
-
-#         total_with_discount = total_price - coupon_discount
-
-#         context['total_price'] = total_price
-#         context['coupon_discount'] = coupon_discount
-#         context['total_with_discount'] = total_with_discount
-#         context['coupon_code'] = coupon_code
-#         context['coupon_applied'] = coupon_applied
-        
-#         return context
-
-# # Mahsulotni cartdan o'chirish funksiyasi
-# def remove_from_cart(request, cart_id):
-#     cart_item = get_object_or_404(Cart, id=cart_id)
-#     cart_item.delete()
-#     return redirect('cart-page')
+    return redirect('cart')

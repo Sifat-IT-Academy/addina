@@ -4,16 +4,18 @@ from shop.models import Product
 
 # Cart
 class Cart(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_added = models.DateTimeField(auto_now=True)
+    session_id = models.CharField(max_length=200, default='')
+
+   
+class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    quantity = models.IntegerField()
     is_active = models.BooleanField(default=True)
 
-# # Coupon
-# class Coupon(models.Model):
-#     code = models.CharField(max_length=50, unique=True)
-#     discount_type = models.CharField(max_length=10, choices=[('percentage', 'Percentage'), ('fixed', 'Fixed')])
-#     discount_value = models.FloatField()
+    def __str__(self) -> str:
+        return self.product.title
 
-#     def __str__(self):
-#         return self.code
+    def get_total(self):
+        return self.quantity * self.product.price
