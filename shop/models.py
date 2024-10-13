@@ -4,16 +4,10 @@ from account.models import User
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 class ProductCategory(models.Model):
-    name_en = models.CharField(max_length=250)
-    name_uz = models.CharField(max_length=250)
-
+    name = models.CharField(max_length=250)
     def __str__(self):
-        from django.utils.translation import get_language
-        current_language = get_language()
-        if current_language == 'en':
-            return self.name_en
-        else:
-            return self.name_uz
+        return f"{self.name}"
+
 
 
 
