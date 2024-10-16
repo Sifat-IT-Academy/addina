@@ -317,7 +317,7 @@
                     </div>
                     
                     
-                    
+                    {% if not request.user.is_authenticated %}
                      <div class="header-lang-item tp-header-currency">
                         <span class="header-currency-toggle text-white" id="header-currency-toggle">{% blocktranslate %}Kirish{% endblocktranslate %}</span>
                         <ul>
@@ -329,13 +329,15 @@
                            </li>
                         </ul>
                      </div>
+                     {% endif %}
+
                      <div class="header-lang-item tp-header-setting">
                         
-                        <span class="header-setting-toggle text-white" id="header-setting-toggle">
+                        
                            {% if request.user.is_authenticated %}
+                           <span class="header-setting-toggle text-white" id="header-setting-toggle">
                            {{ request.user.username }}
-                           {% else %}
-                           Sign up
+                           
                            {% endif %}
                         </span>
                        

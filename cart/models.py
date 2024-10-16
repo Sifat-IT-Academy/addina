@@ -16,6 +16,6 @@ class CartItem(models.Model):
 
     def __str__(self) -> str:
         return self.product.title
-
+    @property
     def get_total(self):
         return self.quantity * self.product.price

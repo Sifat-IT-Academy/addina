@@ -10,10 +10,10 @@ def cart(request):
         cart_items = CartItem.objects.filter(cart=cart,is_active=True)
         total = 0
         for cart_item in cart_items:
-            total += cart_item.quantity*cart_item.product.price
+            total += cart_item.get_total
         context = {
         'cart_items': cart_items,
-        'total':total,
+        'full_total':total,
         'count':len(cart_items)
     }
     
